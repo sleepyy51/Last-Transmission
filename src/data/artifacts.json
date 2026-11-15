@@ -7,7 +7,7 @@
     "lon": -23.418,
     "year": 1967,
     "status": "Last contact with Earth: May 4, 1967",
-    "transmission": null,
+    "transmission": "May 4, 1967 — Surveyor 3 sent its final signal to Earth. After several days of exploring the lunar surface, the spacecraft fell silent as the long lunar night began.",
     "story": null,
     "image": "/artifacts/surveyor-3.png",
     "source": "https://science.nasa.gov/mission/surveyor-3/"
@@ -20,7 +20,7 @@
     "lon": 23.47314,
     "year": 1969,
     "status": "Still at Tranquility Base, left behind on July 21, 1969",
-    "transmission": null,
+    "transmission": "July 21, 1969 — The Apollo 11 crew departed the lunar surface, leaving the descent stage behind. This stage was not designed to operate as an independent transmitting spacecraft, so it sent no further signals to Earth.",
     "story": null,
     "image": "/artifacts/apollo-11-descent-stage.png",
     "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C"
@@ -33,7 +33,7 @@
     "lon": 3.63808,
     "year": 1971,
     "status": "Still parked on the Moon since August 2, 1971",
-    "transmission": null,
+    "transmission": "August 2, 1971 — The Apollo 15 astronauts completed their final lunar exploration activities using the Lunar Roving Vehicle. The rover was left on the Moon and did not continue sending independent signals after the mission.",
     "story": null,
     "image": "/artifacts/apollo-15-lrv.png",
     "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C"
@@ -46,7 +46,7 @@
     "lon": 30.7655,
     "year": 1972,
     "status": "Switched off from Earth on September 30, 1977",
-    "transmission": null,
+    "transmission": "September 30, 1977 — NASA officially switched off the Apollo 17 lunar science station. After nearly five years of collecting information about moonquakes, temperature, and the lunar environment, its scientific data transmissions came to an end.",
     "story": null,
     "image": "/artifacts/apollo-17-alsep.png",
     "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-096C"
@@ -59,7 +59,7 @@
     "lon": -47.95,
     "year": 1976,
     "status": "Operations stopped after a faulty command on November 11, 1982",
-    "transmission": null,
+    "transmission": "November 11, 1982 — Viking 1 sent its final communications after more than six years on Mars. A faulty command interrupted contact with Earth, and all attempts to restore communication were unsuccessful.",
     "story": null,
     "image": "/artifacts/viking-1.png",
     "source": "https://science.nasa.gov/mission/viking-1/"
@@ -72,7 +72,7 @@
     "lon": -33.55,
     "year": 1997,
     "status": "Final data transmission on September 27, 1997",
-    "transmission": null,
+    "transmission": "September 27, 1997 — At 10:23 UTC, NASA received the final data transmission from the Mars Pathfinder mission. Sojourner had explored Mars for 83 days, far exceeding its original seven-day mission plan.",
     "story": null,
     "image": "/artifacts/sojourner.png",
     "source": "https://science.nasa.gov/mission/mars-pathfinder/"
@@ -85,7 +85,7 @@
     "lon": 354.473,
     "year": 2004,
     "status": "Silent since June 10, 2018 after driving 45.16 km",
-    "transmission": null,
+    "transmission": "June 10, 2018 — Opportunity sent its final data to Earth during a massive Martian dust storm. Its last message was an incomplete image of the darkened sky, marking the end of an incredible 14-year exploration.",
     "story": null,
     "image": "/artifacts/opportunity.png",
     "source": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/"
@@ -98,7 +98,7 @@
     "lon": 77.451,
     "year": 2021,
     "status": "Mission completed on January 25, 2024",
-    "transmission": null,
+    "transmission": "January 25, 2024 — NASA announced the end of Ingenuity's mission after receiving images showing damage to its rotor blades. The helicopter completed 72 flights and made history as the first aircraft to fly on another planet.",
     "story": null,
     "image": "/artifacts/ingenuity.png",
     "source": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/"
@@ -111,7 +111,7 @@
     "lon": null,
     "year": 1972,
     "status": "January 23, 2003: Pioneer 10's last signal is received on Earth",
-    "transmission": null,
+    "transmission": "January 23, 2003 — Earth received Pioneer 10's final faint signal from billions of miles away. Its last complete scientific telemetry had arrived earlier, on April 27, 2002, as its power supply gradually weakened.",
     "story": null,
     "image": "/artifacts/pioneer-10.png",
     "source": "https://science.nasa.gov/mission/pioneer-10/"
@@ -124,7 +124,7 @@
     "lon": null,
     "year": 2001,
     "status": "February 12, 2001: NEAR touched down on Eros, the first spacecraft to land on an asteroid",
-    "transmission": null,
+    "transmission": "February 28, 2001 — NEAR Shoemaker made its final contact with Earth after successfully landing on asteroid Eros. Even though it was not designed to survive as a lander, it continued collecting and transmitting valuable scientific information for about two weeks.",
     "story": null,
     "image": "/artifacts/near-shoemaker.png",
     "source": "https://science.nasa.gov/mission/near-shoemaker/"
@@ -137,7 +137,7 @@
     "lon": null,
     "year": 2009,
     "status": "October 30, 2018: Retired after completing its second mission; still orbits the Sun",
-    "transmission": null,
+    "transmission": "November 15, 2018 — Kepler received its final commands from Earth, officially ending its communications with mission control. After discovering thousands of planets beyond our solar system, the space telescope entered retirement.",
     "story": null,
     "image": "/artifacts/kepler.png",
     "source": "https://science.nasa.gov/mission/kepler/"
@@ -150,7 +150,7 @@
     "lon": null,
     "year": 2015,
     "status": "Mission successfully concluded on November 1, 2018",
-    "transmission": null,
+    "transmission": "October 31, 2018 — Dawn lost its radio signal after running out of hydrazine fuel, which helped it point its antenna toward Earth. The spacecraft had completed an extraordinary journey exploring Vesta and Ceres.",
     "story": null,
     "image": "/artifacts/dawn.png",
     "source": "https://science.nasa.gov/mission/dawn/"
