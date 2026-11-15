@@ -10,6 +10,7 @@ export function useTour(stops, guided = false) {
   return {
     index,
     current: index === null ? null : stops[index],
+    start: () => setIndex(0),
     end: () => setIndex(null),
     next: () => setIndex((i) => (i === null ? null : Math.min(i + 1, last))),
     prev: () => setIndex((i) => (i === null ? null : Math.max(i - 1, 0))),

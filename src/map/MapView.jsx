@@ -62,8 +62,12 @@ export default function MapView({ guided = false }) {
 
   function open(id, event) {
     triggerRef.current = event.currentTarget
-    tour.end()
     setSelected(id)
+  }
+
+  function startTour() {
+    setSelected(null)
+    tour.start()
   }
 
   return (
@@ -157,9 +161,14 @@ export default function MapView({ guided = false }) {
             </button>
           </>
         ) : (
-          <span>
-            {entries.length} artifacts · {bodyMeta.label}
-          </span>
+          <>
+            <span>
+              {entries.length} artifacts · {bodyMeta.label}
+            </span>
+            <button type="button" className="link" onClick={startTour}>
+              Start tour
+            </button>
+          </>
         )}
 
         {tour.index !== null && (
