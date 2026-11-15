@@ -85,7 +85,7 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
 |---|---|---|
 | Moon | Surveyor 3 | 1967 |
 | Moon | Apollo 11 descent stage (*Eagle*) | 1969 |
-| Moon | Apollo 12 ALSEP | 1969 |
+| Moon | Apollo 17 ALSEP | 1972 |
 | Moon | Apollo 15 Lunar Roving Vehicle | 1971 |
 | Mars | Viking 1 lander | 1976 |
 | Mars | Sojourner | 1997 |
@@ -98,6 +98,12 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
 
 Coordinates, dates and copy must be filled from NSSDCA/mission pages by the content
 owner. **Nothing in this table is a verified coordinate.**
+
+Coordinates already in `src/data/artifacts.json` were verified on 2026-11-14 against
+the NSSDCA Apollo landing-site table (DE421, planetocentric), NSSDCA mission pages for
+Viking 1 / Pathfinder / Opportunity, and Wagner et al. 2012 for the Apollo 15 LRV
+parking position. Apollo 17 ALSEP replaced Apollo 12 ALSEP because Surveyor 3 sits
+~150 m from the Apollo 12 site — the two pins landed on the same pixel.
 
 ## 6. App shape
 
@@ -200,3 +206,4 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 | Date | Change |
 |---|---|
 | 2026-11-14 | Initial plan agreed: equirectangular pixel-art map, 12 artifacts, three-act tour, ages 9–13, Pages + Actions, compose dev-only. |
+| 2026-11-14 | Apollo 12 ALSEP → Apollo 17 ALSEP. Surveyor 3 and the Apollo 12 ALSEP share a site and projected to the same pixel, making one story unreachable. |
