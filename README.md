@@ -44,6 +44,7 @@ Requires Node 22+.
 npm ci
 npm run dev     # http://localhost:5173/Last-Transmission/
 npm test        # projection tests (node --test)
+npm run test:smoke  # browser smoke tests (Playwright, uses installed Chrome)
 npm run build   # production build into dist/
 ```
 
