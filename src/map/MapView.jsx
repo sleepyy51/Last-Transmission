@@ -1,86 +1,98 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import artifacts from '../data/artifacts.json'
-import StoryPanel from '../story/StoryPanel.jsx'
-import { useTour } from '../tour/useTour.js'
-import { project } from './projection.js'
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import artifacts from "../data/artifacts.json";
+import StoryPanel from "../story/StoryPanel.jsx";
+import { useTour } from "../tour/useTour.js";
+import { project } from "./projection.js";
 
 const BODIES = [
-  { id: 'moon', label: 'Moon', map: 'maps/moon.webp' },
-  { id: 'mars', label: 'Mars', map: 'maps/mars.webp' },
-  { id: 'deep-space', label: 'Deep space' },
-]
+  { id: "moon", label: "Moon", map: "maps/moon.webp" },
+  { id: "mars", label: "Mars", map: "maps/mars.webp" },
+  { id: "deep-space", label: "Deep space" },
+];
 
-const ZOOM = 2.5
+const ZOOM = 2.5;
 
-export default function MapView({ guided = false }) {
-  const [body, setBody] = useState('moon')
-  const [selected, setSelected] = useState(null)
-  const triggerRef = useRef(null)
-  const fallbackRef = useRef(null)
-  const wasInTourRef = useRef(false)
-  const tour = useTour(artifacts, guided)
-  const enteringTour = tour.current !== null && !wasInTourRef.current
+export default function MapView({ guided = false, onSceneChange, onFinish }) {
+  const [body, setBody] = useState("moon");
+  const [selected, setSelected] = useState(null);
+  const triggerRef = useRef(null);
+  const fallbackRef = useRef(null);
+  const wasInTourRef = useRef(false);
+  const tour = useTour(artifacts, guided);
+  const enteringTour = tour.current !== null && !wasInTourRef.current;
 
   useEffect(() => {
-    wasInTourRef.current = tour.current !== null
-  }, [tour.current])
+    wasInTourRef.current = tour.current !== null;
+  }, [tour.current]);
 
   // A tour stop wins over a free-explore selection; both decide the body.
-  const active = tour.current ?? artifacts.find((a) => a.id === selected) ?? null
-  const currentBody = active?.body ?? body
-  const bodyMeta = BODIES.find((b) => b.id === currentBody)
-  const entries = artifacts.filter((a) => a.body === currentBody)
+  const active =
+    tour.current ?? artifacts.find((a) => a.id === selected) ?? null;
+  const currentBody = active?.body ?? body;
+  const bodyMeta = BODIES.find((b) => b.id === currentBody);
+  const entries = artifacts.filter((a) => a.body === currentBody);
+
+  // Exploration stays on the default track; the tour controls scene changes.
+  const scene =
+    tour.index !== null
+      ? currentBody === "deep-space"
+        ? "deepSpace"
+        : "story"
+      : "title";
+  useEffect(() => {
+    onSceneChange?.(scene);
+  }, [onSceneChange, scene]);
 
   // Deep-space entries have no map; lay them out evenly across the starfield.
   const deepPositions = useMemo(() => {
-    const deep = artifacts.filter((a) => a.body === 'deep-space')
+    const deep = artifacts.filter((a) => a.body === "deep-space");
     return new Map(
       deep.map((a, i) => [
         a.id,
         { x: ((i + 0.5) / deep.length) * 100, y: i % 2 ? 62 : 38 },
       ]),
-    )
-  }, [])
+    );
+  }, []);
 
-  const place = (a) => deepPositions.get(a.id) ?? project(a.lat, a.lon)
-  const focus = active ? place(active) : null
+  const place = (a) => deepPositions.get(a.id) ?? project(a.lat, a.lon);
+  const focus = active ? place(active) : null;
 
   // Zoom-to-pin: scale about the top-left, then shift so the point lands centre.
   const worldStyle = focus
     ? {
         transform: `translate(${50 - ZOOM * focus.x}%, ${50 - ZOOM * focus.y}%) scale(${ZOOM})`,
       }
-    : undefined
-  const pinScale = focus ? 1 / ZOOM : 1
+    : undefined;
+  const pinScale = focus ? 1 / ZOOM : 1;
 
   function chooseBody(id) {
-    tour.end()
-    setBody(id)
-    setSelected(null)
+    tour.end();
+    setBody(id);
+    setSelected(null);
   }
 
   // Close returns focus to whatever opened the panel, and drops out of the tour.
   const close = useCallback(() => {
-    if (tour.current) setBody(tour.current.body)
-    tour.end()
-    setSelected(null)
+    if (tour.current) setBody(tour.current.body);
+    tour.end();
+    setSelected(null);
     const target = triggerRef.current?.isConnected
       ? triggerRef.current
-      : fallbackRef.current
-    target?.focus()
-  }, [tour])
+      : fallbackRef.current;
+    target?.focus();
+  }, [tour]);
 
   function open(id, event) {
-    const artifact = artifacts.find((a) => a.id === id)
-    triggerRef.current = event.currentTarget
-    tour.end()
-    if (artifact) setBody(artifact.body)
-    setSelected(id)
+    const artifact = artifacts.find((a) => a.id === id);
+    triggerRef.current = event.currentTarget;
+    tour.end();
+    if (artifact) setBody(artifact.body);
+    setSelected(id);
   }
 
   function startTour() {
-    setSelected(null)
-    tour.start()
+    setSelected(null);
+    tour.start();
   }
 
   return (
@@ -97,6 +109,9 @@ export default function MapView({ guided = false }) {
             {b.label}
           </button>
         ))}
+        <button type="button" onClick={onFinish}>
+          Home
+        </button>
       </div>
 
       {tour.index !== null && (
@@ -107,13 +122,15 @@ export default function MapView({ guided = false }) {
           <span>
             Stop {tour.index + 1} of {artifacts.length}
           </span>
-          <button
-            type="button"
-            onClick={tour.next}
-            disabled={tour.index === artifacts.length - 1}
-          >
-            Next
-          </button>
+          {tour.index === artifacts.length - 1 ? (
+            <button type="button" onClick={onFinish}>
+              Finish
+            </button>
+          ) : (
+            <button type="button" onClick={tour.next}>
+              Next
+            </button>
+          )}
         </div>
       )}
 
@@ -121,7 +138,7 @@ export default function MapView({ guided = false }) {
         <div className="map-bezel">
           <div className="map-viewport">
             <div
-              className={bodyMeta.map ? 'map-world' : 'map-world starfield'}
+              className={bodyMeta.map ? "map-world" : "map-world starfield"}
               style={worldStyle}
             >
               {bodyMeta.map && (
@@ -133,12 +150,12 @@ export default function MapView({ guided = false }) {
                 />
               )}
               {entries.map((a) => {
-                const p = place(a)
+                const p = place(a);
                 return (
                   <button
                     key={a.id}
                     type="button"
-                    className={a.id === active?.id ? 'pin is-active' : 'pin'}
+                    className={a.id === active?.id ? "pin is-active" : "pin"}
                     style={{
                       left: `${p.x}%`,
                       top: `${p.y}%`,
@@ -150,7 +167,7 @@ export default function MapView({ guided = false }) {
                   >
                     <span aria-hidden="true" />
                   </button>
-                )
+                );
               })}
             </div>
           </div>
@@ -166,7 +183,10 @@ export default function MapView({ guided = false }) {
         )}
       </div>
 
-      <section className="artifact-list" aria-label={`${bodyMeta.label} artifacts`}>
+      <section
+        className="artifact-list"
+        aria-label={`${bodyMeta.label} artifacts`}
+      >
         <h2>Artifacts</h2>
         <ul>
           {entries.map((a) => (
@@ -187,7 +207,9 @@ export default function MapView({ guided = false }) {
         {active ? (
           <>
             <strong>{active.name}</strong>
-            {active.status && <span className="status"> · {active.status}</span>}
+            {active.status && (
+              <span className="status"> · {active.status}</span>
+            )}
             <button type="button" className="link" onClick={close}>
               Back
             </button>
@@ -198,11 +220,11 @@ export default function MapView({ guided = false }) {
               {entries.length} artifacts · {bodyMeta.label}
             </span>
             <button type="button" className="link" onClick={startTour}>
-              {tour.started ? 'Resume tour' : 'Start tour'}
+              {tour.started ? "Resume tour" : "Start tour"}
             </button>
           </>
         )}
       </div>
     </section>
-  )
+  );
 }
