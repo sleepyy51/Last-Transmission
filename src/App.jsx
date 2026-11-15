@@ -4,7 +4,7 @@ import MapView from './map/MapView.jsx'
 export default function App() {
   const [view, setView] = useState('title')
 
-  if (view === 'map') return <MapView />
+  if (view !== 'title') return <MapView guided={view === 'tour'} />
 
   return (
     <main className="screen">
@@ -15,9 +15,8 @@ export default function App() {
         Mars — and the science it made possible.
       </p>
       <div className="actions">
-        {/* The guided tour lands next; disabled until it does what it says. */}
-        <button disabled>Begin transmission</button>
-        <button onClick={() => setView('map')}>Explore the map</button>
+        <button onClick={() => setView('tour')}>Begin transmission</button>
+        <button onClick={() => setView('explore')}>Explore the map</button>
       </div>
     </main>
   )
