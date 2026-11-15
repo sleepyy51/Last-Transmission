@@ -34,7 +34,7 @@ export default function MapView({ guided = false, onSceneChange, onFinish }) {
 
   // Exploration stays on the default track; the tour controls scene changes.
   const scene =
-    guided || tour.index !== null
+    tour.index !== null
       ? currentBody === "deep-space"
         ? "deepSpace"
         : "story"

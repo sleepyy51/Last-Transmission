@@ -193,6 +193,7 @@ button:focus-visible {
 
 .map-toolbar {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     justify-content: center;
 }
