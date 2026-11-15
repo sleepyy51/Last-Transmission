@@ -207,3 +207,4 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 |---|---|
 | 2026-11-14 | Initial plan agreed: equirectangular pixel-art map, 12 artifacts, three-act tour, ages 9–13, Pages + Actions, compose dev-only. |
 | 2026-11-14 | Apollo 12 ALSEP → Apollo 17 ALSEP. Surveyor 3 and the Apollo 12 ALSEP share a site and projected to the same pixel, making one story unreachable. |
+| 2026-11-15 | Audio wired from the supplied Scott Buckley tracks: title/finish = At The End Of All Things, Moon/Mars = Clear Skies, deep space = With These Hands, lazy-loaded and looping with a persistent mute. The last tour stop's Next became Finish (returns to the title screen) so the outro cue has somewhere to play. No SFX files were supplied, so none are wired. |

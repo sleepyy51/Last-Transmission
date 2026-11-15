@@ -12,7 +12,7 @@ const BODIES = [
 
 const ZOOM = 2.5
 
-export default function MapView({ guided = false }) {
+export default function MapView({ guided = false, onSceneChange, onFinish }) {
   const [body, setBody] = useState('moon')
   const [selected, setSelected] = useState(null)
   const triggerRef = useRef(null)
@@ -30,6 +30,12 @@ export default function MapView({ guided = false }) {
   const currentBody = active?.body ?? body
   const bodyMeta = BODIES.find((b) => b.id === currentBody)
   const entries = artifacts.filter((a) => a.body === currentBody)
+
+  // The body decides the music scene; Moon and Mars share the story theme.
+  const scene = currentBody === 'deep-space' ? 'deepSpace' : 'story'
+  useEffect(() => {
+    onSceneChange?.(scene)
+  }, [onSceneChange, scene])
 
   // Deep-space entries have no map; lay them out evenly across the starfield.
   const deepPositions = useMemo(() => {
@@ -107,13 +113,15 @@ export default function MapView({ guided = false }) {
           <span>
             Stop {tour.index + 1} of {artifacts.length}
           </span>
-          <button
-            type="button"
-            onClick={tour.next}
-            disabled={tour.index === artifacts.length - 1}
-          >
-            Next
-          </button>
+          {tour.index === artifacts.length - 1 ? (
+            <button type="button" onClick={onFinish}>
+              Finish
+            </button>
+          ) : (
+            <button type="button" onClick={tour.next}>
+              Next
+            </button>
+          )}
         </div>
       )}
 
