@@ -296,8 +296,8 @@ button:focus-visible {
 
 .story-image {
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 120px;
+  height: 120px;
   margin: 12px 0;
   image-rendering: pixelated;
 }
