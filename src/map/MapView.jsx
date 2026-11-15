@@ -135,41 +135,86 @@ export default function MapView({ guided = false, onSceneChange, onFinish }) {
       )}
 
       <div className="map-layout">
-        <div className="map-bezel">
-          <div className="map-viewport">
-            <div
-              className={bodyMeta.map ? "map-world" : "map-world starfield"}
-              style={worldStyle}
-            >
-              {bodyMeta.map && (
-                <img
-                  className="map-image"
-                  src={`${import.meta.env.BASE_URL}${bodyMeta.map}`}
-                  alt={`Equirectangular map of ${bodyMeta.label}`}
-                  draggable={false}
-                />
-              )}
-              {entries.map((a) => {
-                const p = place(a);
-                return (
+        <div className="map-content">
+          <div className="map-bezel">
+            <div className="map-viewport">
+              <div
+                className={bodyMeta.map ? "map-world" : "map-world starfield"}
+                style={worldStyle}
+              >
+                {bodyMeta.map && (
+                  <img
+                    className="map-image"
+                    src={`${import.meta.env.BASE_URL}${bodyMeta.map}`}
+                    alt={`Equirectangular map of ${bodyMeta.label}`}
+                    draggable={false}
+                  />
+                )}
+                {entries.map((a) => {
+                  const p = place(a);
+                  return (
+                    <button
+                      key={a.id}
+                      type="button"
+                      className={a.id === active?.id ? "pin is-active" : "pin"}
+                      style={{
+                        left: `${p.x}%`,
+                        top: `${p.y}%`,
+                        transform: `translate(-50%, -50%) scale(${pinScale})`,
+                      }}
+                      aria-label={`${a.name}, ${a.year}`}
+                      aria-pressed={a.id === active?.id}
+                      onClick={(e) => open(a.id, e)}
+                    >
+                      <span aria-hidden="true" />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <section
+            className="artifact-list"
+            aria-label={`${bodyMeta.label} artifacts`}
+          >
+            <h2>Artifacts</h2>
+            <ul>
+              {entries.map((a) => (
+                <li key={a.id}>
                   <button
-                    key={a.id}
                     type="button"
-                    className={a.id === active?.id ? "pin is-active" : "pin"}
-                    style={{
-                      left: `${p.x}%`,
-                      top: `${p.y}%`,
-                      transform: `translate(-50%, -50%) scale(${pinScale})`,
-                    }}
-                    aria-label={`${a.name}, ${a.year}`}
                     aria-pressed={a.id === active?.id}
                     onClick={(e) => open(a.id, e)}
                   >
-                    <span aria-hidden="true" />
+                    {a.name} ({a.year})
                   </button>
-                );
-              })}
-            </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <div className="map-caption" aria-live="polite">
+            {active ? (
+              <>
+                <strong>{active.name}</strong>
+                {active.status && (
+                  <span className="status"> · {active.status}</span>
+                )}
+                <button type="button" className="link" onClick={close}>
+                  Back
+                </button>
+              </>
+            ) : (
+              <>
+                <span>
+                  {entries.length} artifacts · {bodyMeta.label}
+                </span>
+                <button type="button" className="link" onClick={startTour}>
+                  {tour.started ? "Resume tour" : "Start tour"}
+                </button>
+              </>
+            )}
           </div>
         </div>
 
@@ -180,49 +225,6 @@ export default function MapView({ guided = false, onSceneChange, onFinish }) {
             onClose={close}
             focusOnMount={!tour.current || enteringTour}
           />
-        )}
-      </div>
-
-      <section
-        className="artifact-list"
-        aria-label={`${bodyMeta.label} artifacts`}
-      >
-        <h2>Artifacts</h2>
-        <ul>
-          {entries.map((a) => (
-            <li key={a.id}>
-              <button
-                type="button"
-                aria-pressed={a.id === active?.id}
-                onClick={(e) => open(a.id, e)}
-              >
-                {a.name} ({a.year})
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <div className="map-caption" aria-live="polite">
-        {active ? (
-          <>
-            <strong>{active.name}</strong>
-            {active.status && (
-              <span className="status"> · {active.status}</span>
-            )}
-            <button type="button" className="link" onClick={close}>
-              Back
-            </button>
-          </>
-        ) : (
-          <>
-            <span>
-              {entries.length} artifacts · {bodyMeta.label}
-            </span>
-            <button type="button" className="link" onClick={startTour}>
-              {tour.started ? "Resume tour" : "Start tour"}
-            </button>
-          </>
         )}
       </div>
     </section>

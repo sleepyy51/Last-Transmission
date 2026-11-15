@@ -330,10 +330,18 @@ button:focus-visible {
     gap: 12px;
 }
 
+.map-content {
+    display: grid;
+    gap: 12px;
+}
+
 @media (min-width: 768px) {
     .map-layout {
         grid-template-columns: minmax(0, 1fr) 340px;
         align-items: start;
+    }
+    .map-content {
+        min-width: 0;
     }
 }
 
