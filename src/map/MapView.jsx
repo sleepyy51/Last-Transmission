@@ -166,7 +166,7 @@ export default function MapView({ guided = false }) {
               {entries.length} artifacts · {bodyMeta.label}
             </span>
             <button type="button" className="link" onClick={startTour}>
-              Start tour
+              {tour.started ? 'Resume tour' : 'Start tour'}
             </button>
           </>
         )}
