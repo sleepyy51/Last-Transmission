@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import artifacts from '../data/artifacts.json'
+import StoryPanel from '../story/StoryPanel.jsx'
 import { project } from './projection.js'
 
 const BODIES = [
@@ -12,6 +13,7 @@ const ZOOM = 2.5
 export default function MapView() {
   const [body, setBody] = useState('moon')
   const [selected, setSelected] = useState(null)
+  const triggerRef = useRef(null)
 
   const pins = useMemo(
     () => artifacts.filter((a) => a.body === body && a.lat !== null && a.lon !== null),
@@ -35,6 +37,17 @@ export default function MapView() {
     setSelected(null)
   }
 
+  // Close returns focus to whatever opened the panel.
+  const close = useCallback(() => {
+    setSelected(null)
+    triggerRef.current?.focus()
+  }, [])
+
+  function open(id, event) {
+    triggerRef.current = event.currentTarget
+    setSelected(id)
+  }
+
   return (
     <section className="map-screen">
       <div className="map-toolbar" role="group" aria-label="Celestial body">
@@ -50,37 +63,43 @@ export default function MapView() {
         ))}
       </div>
 
-      <div className="map-bezel">
-        <div className="map-viewport">
-          <div className="map-world" style={worldStyle}>
-            <img
-              className="map-image"
-              src={`${import.meta.env.BASE_URL}${bodyMeta.map}`}
-              alt={`Equirectangular map of ${bodyMeta.label}`}
-              draggable={false}
-            />
-            {pins.map((a) => {
-              const p = project(a.lat, a.lon)
-              return (
-                <button
-                  key={a.id}
-                  type="button"
-                  className={a.id === selected ? 'pin is-active' : 'pin'}
-                  style={{
-                    left: `${p.x}%`,
-                    top: `${p.y}%`,
-                    transform: `translate(-50%, -50%) scale(${pinScale})`,
-                  }}
-                  aria-label={`${a.name}, ${a.year}`}
-                  aria-pressed={a.id === selected}
-                  onClick={() => setSelected(a.id)}
-                >
-                  <span aria-hidden="true" />
-                </button>
-              )
-            })}
+      <div className="map-layout">
+        <div className="map-bezel">
+          <div className="map-viewport">
+            <div className="map-world" style={worldStyle}>
+              <img
+                className="map-image"
+                src={`${import.meta.env.BASE_URL}${bodyMeta.map}`}
+                alt={`Equirectangular map of ${bodyMeta.label}`}
+                draggable={false}
+              />
+              {pins.map((a) => {
+                const p = project(a.lat, a.lon)
+                return (
+                  <button
+                    key={a.id}
+                    type="button"
+                    className={a.id === selected ? 'pin is-active' : 'pin'}
+                    style={{
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      transform: `translate(-50%, -50%) scale(${pinScale})`,
+                    }}
+                    aria-label={`${a.name}, ${a.year}`}
+                    aria-pressed={a.id === selected}
+                    onClick={(e) => open(a.id, e)}
+                  >
+                    <span aria-hidden="true" />
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
+
+        {active && (
+          <StoryPanel key={active.id} artifact={active} onClose={close} />
+        )}
       </div>
 
       <section className="artifact-list" aria-label={`${bodyMeta.label} artifacts`}>
@@ -91,7 +110,7 @@ export default function MapView() {
               <button
                 type="button"
                 aria-pressed={a.id === selected}
-                onClick={() => setSelected(a.id)}
+                onClick={(e) => open(a.id, e)}
               >
                 {a.name} ({a.year})
               </button>
@@ -105,7 +124,7 @@ export default function MapView() {
           <>
             <strong>{active.name}</strong>
             {active.status && <span className="status"> · {active.status}</span>}
-            <button type="button" className="link" onClick={() => setSelected(null)}>
+            <button type="button" className="link" onClick={close}>
               Back
             </button>
           </>
