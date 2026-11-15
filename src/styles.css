@@ -278,7 +278,7 @@ button:focus-visible {
 .story-status {
   margin: 0 0 12px;
   color: var(--dim);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .story-transmission {
