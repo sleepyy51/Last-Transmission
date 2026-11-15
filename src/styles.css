@@ -30,6 +30,13 @@ body {
     text-align: center;
 }
 
+.site-logo {
+    width: min(220px, 55vw);
+    aspect-ratio: 1;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
 h1 {
     margin: 0;
     font-size: clamp(2rem, 8vw, 4rem);

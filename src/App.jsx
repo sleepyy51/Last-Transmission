@@ -48,6 +48,11 @@ export default function App() {
   const screen =
     view === "title" ? (
       <main className="screen">
+        <img
+          className="site-logo"
+          src={`${import.meta.env.BASE_URL}logo.svg`}
+          alt="Last Transmission logo"
+        />
         <h1>Last Transmission</h1>
         <p className="subtitle">Forgotten astral artifacts from mankind.</p>
         <p className="pitch">
