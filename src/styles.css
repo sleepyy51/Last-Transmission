@@ -155,6 +155,29 @@ button:focus-visible {
   box-shadow: 0 0 12px 4px var(--accent);
 }
 
+.artifact-list h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.artifact-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.artifact-list button {
+  padding: 6px 10px;
+}
+
+.artifact-list button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 .map-caption {
   min-height: 44px;
   display: flex;

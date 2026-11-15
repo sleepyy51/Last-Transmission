@@ -83,6 +83,23 @@ export default function MapView() {
         </div>
       </div>
 
+      <section className="artifact-list" aria-label={`${bodyMeta.label} artifacts`}>
+        <h2>Artifacts</h2>
+        <ul>
+          {pins.map((a) => (
+            <li key={a.id}>
+              <button
+                type="button"
+                aria-pressed={a.id === selected}
+                onClick={() => setSelected(a.id)}
+              >
+                {a.name} ({a.year})
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <div className="map-caption" aria-live="polite">
         {active ? (
           <>
