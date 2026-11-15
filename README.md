@@ -20,7 +20,7 @@ Twelve artifacts left behind by NASA missions, presented as one guided tour in t
 - **Story panel** — the year, what happened to the artifact, and a link to the NASA source. In-character “last transmissions” and factual story copy are pending. Side drawer on desktop, bottom sheet on phones.
 - **Deep-space act** — no basemap for spacecraft that left the Moon and Mars, so the four deep-space entries sit on a starfield.
 - **Maps** — full-surface equirectangular 2:1 images, downscaled and rendered with `image-rendering: pixelated` inside a pixel-art bezel.
-- **Audio** — three looping Scott Buckley themes: the title and finish screens, the Moon and Mars story, and the deep-space act, plus a Hove Audio click effect on every control. Music starts on the first interaction, is lazy-loaded, and music and effects have separate on/off switches in the About panel. Purely decorative.
+- **Audio** — three looping Scott Buckley themes: the title and finish screens, the Moon and Mars story, and the deep-space act, plus a Hove Audio click effect on every control. Themes crossfade when the act changes, fade in on start, and fade out/in with the music switch. Music starts on the first interaction, is lazy-loaded, and music and effects have separate on/off switches in the About panel. Purely decorative.
 
 Designed for ages 9–13 and casual space fans.
 
