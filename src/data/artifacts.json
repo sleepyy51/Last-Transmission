@@ -9,7 +9,7 @@
     "status": "Last contact with Earth: May 4, 1967",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/surveyor-3.png",
     "source": "https://science.nasa.gov/mission/surveyor-3/"
   },
   {
@@ -22,7 +22,7 @@
     "status": "Still at Tranquility Base, left behind on July 21, 1969",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/apollo-11-descent-stage.png",
     "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C"
   },
   {
@@ -35,7 +35,7 @@
     "status": "Still parked on the Moon since August 2, 1971",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/apollo-15-lrv.png",
     "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C"
   },
   {
@@ -48,7 +48,7 @@
     "status": "Switched off from Earth on September 30, 1977",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/apollo-17-alsep.png",
     "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-096C"
   },
   {
@@ -61,7 +61,7 @@
     "status": "Operations stopped after a faulty command on November 11, 1982",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/viking-1.png",
     "source": "https://science.nasa.gov/mission/viking-1/"
   },
   {
@@ -74,7 +74,7 @@
     "status": "Final data transmission on September 27, 1997",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/sojourner.png",
     "source": "https://science.nasa.gov/mission/mars-pathfinder/"
   },
   {
@@ -87,7 +87,7 @@
     "status": "Silent since June 10, 2018 after driving 45.16 km",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/opportunity.png",
     "source": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/"
   },
   {
@@ -100,7 +100,7 @@
     "status": "Mission completed on January 25, 2024",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/ingenuity.png",
     "source": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/"
   },
   {
@@ -113,7 +113,7 @@
     "status": "January 23, 2003: Pioneer 10's last signal is received on Earth",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/pioneer-10.png",
     "source": "https://science.nasa.gov/mission/pioneer-10/"
   },
   {
@@ -126,7 +126,7 @@
     "status": "February 12, 2001: NEAR touched down on Eros, the first spacecraft to land on an asteroid",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/near-shoemaker.png",
     "source": "https://science.nasa.gov/mission/near-shoemaker/"
   },
   {
@@ -139,7 +139,7 @@
     "status": "October 30, 2018: Retired after completing its second mission; still orbits the Sun",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/kepler.png",
     "source": "https://science.nasa.gov/mission/kepler/"
   },
   {
@@ -152,7 +152,7 @@
     "status": "Mission successfully concluded on November 1, 2018",
     "transmission": null,
     "story": null,
-    "image": null,
+    "image": "/artifacts/dawn.png",
     "source": "https://science.nasa.gov/mission/dawn/"
   }
 ]
