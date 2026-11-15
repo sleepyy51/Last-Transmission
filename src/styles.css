@@ -129,6 +129,19 @@ button:focus-visible {
   user-select: none;
 }
 
+/* Deep-space act: no basemap, just a still starfield. */
+.map-world.starfield {
+  background-color: #05060a;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, #fff, transparent),
+    radial-gradient(1px 1px at 68% 14%, #fff, transparent),
+    radial-gradient(1px 1px at 34% 72%, #fff, transparent),
+    radial-gradient(1px 1px at 87% 58%, #fff, transparent),
+    radial-gradient(1px 1px at 52% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 8% 84%, #fff, transparent),
+    radial-gradient(1px 1px at 94% 30%, #fff, transparent);
+}
+
 .pin {
   position: absolute;
   width: 44px;
@@ -198,6 +211,14 @@ button:focus-visible {
   text-decoration: underline;
   padding: 0 6px;
   min-height: 0;
+}
+
+.tour-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: var(--dim);
 }
 
 /* ---- story panel ---- */

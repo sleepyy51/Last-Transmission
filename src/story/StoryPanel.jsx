@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react'
 
 const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
-export default function StoryPanel({ artifact, onClose }) {
+// focusOnMount is false during the tour so Next/Previous keep keyboard focus.
+export default function StoryPanel({ artifact, onClose, focusOnMount = true }) {
   const panelRef = useRef(null)
 
   useEffect(() => {
-    panelRef.current?.focus()
+    if (focusOnMount) panelRef.current?.focus()
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
     }
