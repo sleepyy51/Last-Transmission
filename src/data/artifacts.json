@@ -6,11 +6,11 @@
     "lat": -3.0162,
     "lon": -23.418,
     "year": 1967,
-    "status": null,
+    "status": "Last contacted with space craft: May 4, 1967",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/surveyor-3/"
   },
   {
     "id": "apollo-11-descent-stage",
@@ -19,11 +19,11 @@
     "lat": 0.67416,
     "lon": 23.47314,
     "year": 1969,
-    "status": null,
+    "status": "Uknown assumed to have crashed after 1-4 months of July 21, 1969",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C"
   },
   {
     "id": "apollo-15-lrv",
@@ -32,11 +32,11 @@
     "lat": 26.13173,
     "lon": 3.63808,
     "year": 1971,
-    "status": null,
+    "status": "Impacted on the moon at Agust 3rd",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C"
   },
   {
     "id": "apollo-17-alsep",
@@ -49,7 +49,7 @@
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": ""
   },
   {
     "id": "viking-1",
@@ -58,11 +58,11 @@
     "lat": 22.27,
     "lon": -47.95,
     "year": 1976,
-    "status": null,
+    "status": "Operation stoped after a faulty command on November 11, 1982",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/viking-1/"
   },
   {
     "id": "sojourner",
@@ -71,11 +71,11 @@
     "lat": 19.33,
     "lon": -33.55,
     "year": 1997,
-    "status": null,
+    "status": "Final data transmission on September 27, 1997",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/mars-pathfinder/"
   },
   {
     "id": "opportunity",
@@ -84,11 +84,11 @@
     "lat": -1.946,
     "lon": 354.473,
     "year": 2004,
-    "status": null,
+    "status": "Stoppped on 2018 after traveling 45.16km",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/"
   },
   {
     "id": "ingenuity",
@@ -97,11 +97,11 @@
     "lat": 18.4449,
     "lon": 77.451,
     "year": 2021,
-    "status": null,
+    "status": "Mission completed on January 25, 2024",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/"
   },
   {
     "id": "pioneer-10",
@@ -110,11 +110,11 @@
     "lat": null,
     "lon": null,
     "year": 1972,
-    "status": null,
+    "status": "January 23, 2003: Pioneer 10's last signal is received on Earth",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/pioneer-10/"
   },
   {
     "id": "near-shoemaker",
@@ -123,11 +123,11 @@
     "lat": null,
     "lon": null,
     "year": 2001,
-    "status": null,
+    "status": "February 12, 2001: NEAR touched down on Eros. First U.S. spacecraft landend on a celestial body",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/near-shoemaker/"
   },
   {
     "id": "kepler",
@@ -136,11 +136,11 @@
     "lat": null,
     "lon": null,
     "year": 2009,
-    "status": null,
+    "status": "October 30, 2018. Retired after completing it's second missions, still roams space",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/kepler/"
   },
   {
     "id": "dawn",
@@ -149,10 +149,10 @@
     "lat": null,
     "lon": null,
     "year": 2015,
-    "status": null,
+    "status": "Mission succesfully concluded on November 1, 2018",
     "transmission": null,
     "story": null,
     "image": null,
-    "source": null
+    "source": "https://science.nasa.gov/mission/dawn/"
   }
 ]
