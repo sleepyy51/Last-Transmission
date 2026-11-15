@@ -260,10 +260,6 @@ button:focus-visible {
   }
 }
 
-.story-panel:focus {
-  outline: none;
-}
-
 .story-panel h2 {
   margin: 4px 0 8px;
   padding-right: 52px;

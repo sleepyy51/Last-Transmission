@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import artifacts from '../data/artifacts.json'
 import StoryPanel from '../story/StoryPanel.jsx'
 import { useTour } from '../tour/useTour.js'
@@ -16,7 +16,14 @@ export default function MapView({ guided = false }) {
   const [body, setBody] = useState('moon')
   const [selected, setSelected] = useState(null)
   const triggerRef = useRef(null)
+  const fallbackRef = useRef(null)
+  const wasInTourRef = useRef(false)
   const tour = useTour(artifacts, guided)
+  const enteringTour = tour.current !== null && !wasInTourRef.current
+
+  useEffect(() => {
+    wasInTourRef.current = tour.current !== null
+  }, [tour.current])
 
   // A tour stop wins over a free-explore selection; both decide the body.
   const active = tour.current ?? artifacts.find((a) => a.id === selected) ?? null
@@ -57,11 +64,17 @@ export default function MapView({ guided = false }) {
     if (tour.current) setBody(tour.current.body)
     tour.end()
     setSelected(null)
-    triggerRef.current?.focus()
+    const target = triggerRef.current?.isConnected
+      ? triggerRef.current
+      : fallbackRef.current
+    target?.focus()
   }, [tour])
 
   function open(id, event) {
+    const artifact = artifacts.find((a) => a.id === id)
     triggerRef.current = event.currentTarget
+    tour.end()
+    if (artifact) setBody(artifact.body)
     setSelected(id)
   }
 
@@ -73,9 +86,10 @@ export default function MapView({ guided = false }) {
   return (
     <section className="map-screen">
       <div className="map-toolbar" role="group" aria-label="Celestial body">
-        {BODIES.map((b) => (
+        {BODIES.map((b, index) => (
           <button
             key={b.id}
+            ref={index === 0 ? fallbackRef : undefined}
             type="button"
             aria-pressed={b.id === currentBody}
             onClick={() => chooseBody(b.id)}
@@ -147,7 +161,7 @@ export default function MapView({ guided = false }) {
             key={active.id}
             artifact={active}
             onClose={close}
-            focusOnMount={!tour.current}
+            focusOnMount={!tour.current || enteringTour}
           />
         )}
       </div>

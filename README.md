@@ -11,13 +11,13 @@ Built for the NASA Space Apps Challenge 2026 challenge
 
 ## What it is
 
-Twelve artifacts left behind by NASA missions, told as one guided tour in three acts
+Twelve artifacts left behind by NASA missions, presented as one guided tour in three acts
 (the Moon, Mars, deep space), with free exploration always available.
 
 - **Title screen** — “Begin transmission” starts the guided tour; “Explore the map” goes straight to free exploration.
 - **Guided tour** — twelve stops in mission order. Each stop switches the map body, zooms to the artifact, and opens its story.
 - **Free explore** — Moon, Mars, and Deep space tabs; zoom-to-pin; an artifact list for each body.
-- **Story panel** — the year, what happened to the artifact, an in-character “last transmission”, 60–90 words of factual copy, and a link to the NASA source. Side drawer on desktop, bottom sheet on phones.
+- **Story panel** — the year, what happened to the artifact, and a link to the NASA source. In-character “last transmissions” and factual story copy are pending. Side drawer on desktop, bottom sheet on phones.
 - **Deep-space act** — no basemap for spacecraft that left the Moon and Mars, so the four deep-space entries sit on a starfield.
 - **Maps** — full-surface equirectangular 2:1 images, downscaled and rendered with `image-rendering: pixelated` inside a pixel-art bezel.
 
@@ -27,9 +27,9 @@ Designed for ages 9–13 and casual space fans.
 
 | Challenge asks | Where it shows up |
 |---|---|
-| Tell the story of NASA’s discarded equipment | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`). |
-| Explain what it is, why it was sent, and what science it made possible | The story panel: in-character last transmission, factual story, and a NASA source link per artifact. |
-| Teach school-age and casual space enthusiasts | Plain-language copy for ages 9–13, a guided tour with no prior knowledge assumed, and a pixel-art map. |
+| Tell the story of NASA’s discarded equipment | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`); narrative content is pending. |
+| Explain what it is, why it was sent, and what science it made possible | The story panel currently provides each artifact’s year, status, and NASA source link; in-character transmissions and factual story copy are pending. |
+| Teach school-age and casual space enthusiasts | A guided tour with no prior knowledge assumed and a pixel-art map; age-targeted explanatory copy is pending. |
 | Use an interactive web format | React + Vite single-page app: map, zoom-to-pin, tour controls, story panel, keyboard support. |
 | Consider accessibility of the format | See [Accessibility](#accessibility) — what is covered and what is not. |
 | Accuracy is important | Every entry has a required NSSDCA or NASA mission-page source; coordinates were verified against the NSSDCA Apollo landing-site table, NSSDCA lander pages, and Wagner et al. 2012 for the Apollo 15 LRV parking position. |
