@@ -1,30 +1,53 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const TRACKS = {
+const asset = (path) => `${import.meta.env.BASE_URL}${path}`
+
+const MUSIC = {
   title: 'audio/at-the-end-of-all-things.mp3',
   story: 'audio/clear-skies.mp3',
   deepSpace: 'audio/with-these-hands.mp3',
 }
+const CLICK = 'audio/sfx/click.mp3'
 
-// One Audio element, created on the first gesture (browsers block autoplay) and
-// reused as the track changes. Audio is decorative: a failed play is ignored.
-export function useAudio(track) {
-  const audio = useRef(null)
+// Music: one Audio element, created on the first gesture (browsers block
+// autoplay) and reused as the track changes. Click effects are a second,
+// lazily created element. Audio is decorative: a failed play is ignored.
+export function useAudio(scene) {
+  const music = useRef(null)
+  const click = useRef(null)
   const [started, setStarted] = useState(false)
-  const [muted, setMuted] = useState(false)
+  const [musicMuted, setMusicMuted] = useState(false)
+  const [sfxMuted, setSfxMuted] = useState(false)
   const start = useCallback(() => setStarted(true), [])
-  const toggleMute = useCallback(() => setMuted((m) => !m), [])
+  const toggleMusic = useCallback(() => setMusicMuted((m) => !m), [])
+  const toggleSfx = useCallback(() => setSfxMuted((m) => !m), [])
 
   useEffect(() => {
     if (!started) return
-    const el = (audio.current ??= new Audio())
+    const el = (music.current ??= new Audio())
     el.loop = true
     el.volume = 0.4
-    el.muted = muted
-    const src = `${import.meta.env.BASE_URL}${TRACKS[track]}`
+    el.muted = musicMuted
+    const src = asset(MUSIC[scene])
     if (el.getAttribute('src') !== src) el.src = src
     el.play().catch(() => {})
-  }, [started, track, muted])
+  }, [started, scene, musicMuted])
 
-  return { started, muted, start, toggleMute }
+  const playClick = useCallback(() => {
+    if (sfxMuted) return
+    const el = (click.current ??= new Audio(asset(CLICK)))
+    el.volume = 0.3
+    el.currentTime = 0
+    el.play().catch(() => {})
+  }, [sfxMuted])
+
+  return {
+    started,
+    musicMuted,
+    sfxMuted,
+    start,
+    toggleMusic,
+    toggleSfx,
+    playClick,
+  }
 }

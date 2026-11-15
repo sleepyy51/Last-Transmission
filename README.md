@@ -20,7 +20,7 @@ Twelve artifacts left behind by NASA missions, presented as one guided tour in t
 - **Story panel** — the year, what happened to the artifact, and a link to the NASA source. In-character “last transmissions” and factual story copy are pending. Side drawer on desktop, bottom sheet on phones.
 - **Deep-space act** — no basemap for spacecraft that left the Moon and Mars, so the four deep-space entries sit on a starfield.
 - **Maps** — full-surface equirectangular 2:1 images, downscaled and rendered with `image-rendering: pixelated` inside a pixel-art bezel.
-- **Audio** — three looping Scott Buckley themes: the title and finish screens, the Moon and Mars story, and the deep-space act. Music starts on the first interaction, is lazy-loaded, and has a persistent mute toggle. Purely decorative.
+- **Audio** — three looping Scott Buckley themes: the title and finish screens, the Moon and Mars story, and the deep-space act, plus a Hove Audio click effect on every control. Music starts on the first interaction, is lazy-loaded, and music and effects have separate on/off switches in the About panel. Purely decorative.
 
 Designed for ages 9–13 and casual space fans.
 
@@ -61,8 +61,9 @@ Repository setting: **Pages → Source → GitHub Actions**.
 ```
 src/
   main.jsx
-  App.jsx              title screen, tour vs free-explore entry
+  App.jsx              title screen, tour vs free-explore entry, audio toggles
   styles.css
+  about/AboutPanel.jsx About, credits, music and click-effect switches
   data/artifacts.json  the 12 entries; array order is tour order
   map/
     projection.js      lat/lon → x/y percentage (tested)
@@ -90,13 +91,13 @@ Covered:
 - Body text is at least 16 px; text colours meet 4.5:1 contrast against the background.
 - The map image has alt text; artifact images use the artifact name as alt text.
 - `prefers-reduced-motion` disables the zoom animation.
-- Audio starts only after a user gesture; the mute control is always visible once audio is running, and nothing in the app is audio-only.
+- Audio starts only after a user gesture; music and click effects have separate on/off switches in the About panel, which is reachable from every screen; nothing in the app is audio-only.
 
 Not covered:
 
 - No formal WCAG 2.1 AA audit has been run, and there has been no screen-reader testing.
 - High-contrast / forced-colors modes have not been tested.
-- The mute choice is not remembered across page reloads.
+- The music/effect choices are not remembered across page reloads, and there is no volume control.
 
 ## Credits
 
@@ -105,6 +106,7 @@ Not covered:
 - Both basemaps are public domain.
 - Art credits will be added alongside those assets.
 - All background music tracks are composed by **Scott Buckley** ([www.scottbuckley.com.au](https://www.scottbuckley.com.au)) and licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/):
+- All sound effects are from **Hove Audio** ([https://hoveaudio.itch.io/](https://hoveaudio.itch.io/)).
 
 * **"At The End Of All Things"** – Intro & Outro theme
 * **"Clear Skies"** – Story introduction theme

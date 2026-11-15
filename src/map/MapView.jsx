@@ -31,8 +31,13 @@ export default function MapView({ guided = false, onSceneChange, onFinish }) {
   const bodyMeta = BODIES.find((b) => b.id === currentBody)
   const entries = artifacts.filter((a) => a.body === currentBody)
 
-  // The body decides the music scene; Moon and Mars share the story theme.
-  const scene = currentBody === 'deep-space' ? 'deepSpace' : 'story'
+  // Exploration stays on the default track; the tour controls scene changes.
+  const scene =
+    guided || tour.index !== null
+      ? currentBody === 'deep-space'
+        ? 'deepSpace'
+        : 'story'
+      : 'title'
   useEffect(() => {
     onSceneChange?.(scene)
   }, [onSceneChange, scene])
