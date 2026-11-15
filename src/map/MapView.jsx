@@ -85,6 +85,24 @@ export default function MapView({ guided = false }) {
         ))}
       </div>
 
+      {tour.index !== null && (
+        <div className="tour-controls">
+          <button type="button" onClick={tour.prev} disabled={tour.index === 0}>
+            Previous
+          </button>
+          <span>
+            Stop {tour.index + 1} of {artifacts.length}
+          </span>
+          <button
+            type="button"
+            onClick={tour.next}
+            disabled={tour.index === artifacts.length - 1}
+          >
+            Next
+          </button>
+        </div>
+      )}
+
       <div className="map-layout">
         <div className="map-bezel">
           <div className="map-viewport">
@@ -169,28 +187,6 @@ export default function MapView({ guided = false }) {
               {tour.started ? 'Resume tour' : 'Start tour'}
             </button>
           </>
-        )}
-
-        {tour.index !== null && (
-          <div className="tour-controls">
-            <button
-              type="button"
-              onClick={tour.prev}
-              disabled={tour.index === 0}
-            >
-              Previous
-            </button>
-            <span>
-              Stop {tour.index + 1} of {artifacts.length}
-            </span>
-            <button
-              type="button"
-              onClick={tour.next}
-              disabled={tour.index === artifacts.length - 1}
-            >
-              Next
-            </button>
-          </div>
         )}
       </div>
     </section>

@@ -215,9 +215,10 @@ button:focus-visible {
 
 .tour-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-left: auto;
   color: var(--dim);
 }
 
