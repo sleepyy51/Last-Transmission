@@ -1,4 +1,11 @@
+import { useState } from 'react'
+import MapView from './map/MapView.jsx'
+
 export default function App() {
+  const [view, setView] = useState('title')
+
+  if (view === 'map') return <MapView />
+
   return (
     <main className="screen">
       <h1>Last Transmission</h1>
@@ -8,9 +15,9 @@ export default function App() {
         Mars — and the science it made possible.
       </p>
       <div className="actions">
-        {/* Map and tour land next; disabled until they do what they say. */}
+        {/* The guided tour lands next; disabled until it does what it says. */}
         <button disabled>Begin transmission</button>
-        <button disabled>Explore the map</button>
+        <button onClick={() => setView('map')}>Explore the map</button>
       </div>
     </main>
   )
