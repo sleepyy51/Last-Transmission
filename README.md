@@ -1,6 +1,6 @@
 # Last Transmission
 
-**Forgotten astral artifacts from mankind.**
+**Forgotten astral artifacts by mankind.**
 
 An interactive pixel-art map of NASA hardware still sitting on the Moon and Mars — and the science it made possible.
 
@@ -17,19 +17,30 @@ Twelve artifacts left behind by NASA missions, presented as one guided tour in t
 - **Title screen** — “Begin transmission” starts the guided tour; “Explore the map” goes straight to free exploration.
 - **Guided tour** — twelve stops in mission order. Each stop switches the map body, zooms to the artifact, and opens its story. **Finish** on the last stop returns to the title screen.
 - **Free explore** — Moon, Mars, and Deep space tabs; zoom-to-pin; an artifact list for each body.
-- **Story panel** — each stop has an in-character “last transmission”, a 60–90 word factual story, and a link to the NASA source. Side drawer on desktop, bottom sheet on phones.
+- **Story panel** — each stop has an in-character “last transmission” and a first-person story told by Nib, a Martian cat narrator. Clicking Nib (or “Tell me a story”) opens a popup that tells the story one beat at a time; after the last beat it continues with Nib’s fact-check. A link to the NASA source stays at the bottom. Side drawer on desktop, bottom sheet on phones.
 - **Deep-space act** — no basemap for spacecraft that left the Moon and Mars, so the four deep-space entries sit on a starfield.
 - **Maps** — full-surface equirectangular 2:1 images, downscaled and rendered with `image-rendering: pixelated` inside a pixel-art bezel.
 - **Audio** — three looping Scott Buckley themes: the title and finish screens, the Moon and Mars story, and the deep-space act, plus a Hove Audio click effect on every control. Themes crossfade when the act changes, fade in on start, and fade out/in with the music switch. Music starts on the first interaction, is lazy-loaded, and music and effects have separate on/off switches in the About panel. Purely decorative.
 
 Designed for ages 9–13 and casual space fans.
 
+## Super Intelligence (SI) use
+
+SI tools were used to build this project, and the visible indicators are in the app.
+
+- **Images:** Nib’s portrait and the twelve artifact sprites are SI-generated. Every displayed SI image carries a visible “AI” watermark, and Nib’s portrait has an additional in-app AI badge. Nib’s source SVG retains its C2PA provenance (Google Generative AI). The SI-generated images contain no NASA logos, flags, or mission insignia.
+- **Code and tests:** developed with [Claude Code](https://claude.com/claude-code) (Anthropic) and reviewed by the team. Recent commits carry a `Co-Authored-By: Claude Code` trailer.
+- **Narration and fact-check copy:** drafted with SI assistance and checked against the NASA sources linked in each story.
+- **Audio:** no SI-generated audio. Music is by Scott Buckley; sound effects are by Hove Audio.
+
+The same disclosure appears in the in-app About panel and the submission form.
+
 ## How it maps to the challenge
 
 | Challenge asks                                                         | Where it shows up                                                                                                                                                                                                          |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tell the story of NASA’s discarded equipment                           | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`), each with an in-character “last transmission”.                                                               |
-| Explain what it is, why it was sent, and what science it made possible | Each story panel has a 60–90 word factual story covering what the artifact is, why it was sent, and what it found, plus a NASA source link.                                                                                 |
+| Tell the story of NASA’s discarded equipment                           | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`), each with an in-character “last transmission”.                                                              |
+| Explain what it is, why it was sent, and what science it made possible | Each story panel has a narrated first-person story, a fact-check that follows it to separate the tale from the record, and a NASA source link.                                                                             |
 | Teach school-age and casual space enthusiasts                          | A guided tour with no prior knowledge assumed, a pixel-art map, and stories written for ages 9–13.                                                                                                                         |
 | Use an interactive web format                                          | React + Vite single-page app: map, zoom-to-pin, tour controls, story panel, keyboard support.                                                                                                                              |
 | Consider accessibility of the format                                   | See [Accessibility](#accessibility) — what is covered and what is not.                                                                                                                                                     |
@@ -43,7 +54,7 @@ Requires Node 22+.
 ```sh
 npm ci
 npm run dev     # http://localhost:5173/Last-Transmission/
-npm test        # projection tests (node --test)
+npm test        # unit and content tests (node --test)
 npm run test:smoke  # browser smoke tests (Playwright, uses installed Chrome)
 npm run build   # production build into dist/
 ```
@@ -70,12 +81,12 @@ src/
     projection.js      lat/lon → x/y percentage (tested)
     projection.test.js
     MapView.jsx        bezel, basemap, pins, zoom-to-pin, tour controls
-  story/StoryPanel.jsx drawer (desktop) / bottom sheet (mobile)
+  story/StoryPanel.jsx drawer (desktop) / bottom sheet (mobile), narrator popup
   tour/useTour.js      tour index, previous/next, resume
   audio/useAudio.js    lazy music player, track switching, mute
 public/
   maps/moon.webp, maps/mars.webp
-  audio/*.mp3, artifacts/*.png
+  audio/*.mp3, artifacts/*.png, narrator/cat.webp
 ```
 
 Adding or reordering an artifact in `artifacts.json` reorders the tour; no code change is needed.
@@ -88,29 +99,28 @@ Covered:
 - Map pins and artifact list items are real `<button>`s with accessible names and `aria-pressed`.
 - Visible focus ring on every control; focus is not trapped.
 - The story panel takes focus when opened from a map pin, returns focus to its trigger when closed, and closes on Escape.
+- The fact-check appears inside Nib's popup after the last story beat, so the tale and the record stay in one readable place.
+- Nib's popup is opened by a labelled button; focus moves into it on open and returns to the button on close. Its close button is a 44 px target.
+- The narrator portrait is a button with a descriptive accessible name; the portrait image itself is decorative (`alt=""`).
 - Tour stops are announced through an `aria-live` caption.
 - Body text is at least 16 px; text colours meet 4.5:1 contrast against the background.
 - The map image has alt text; artifact images use the artifact name as alt text.
-- `prefers-reduced-motion` disables the zoom animation.
+- `prefers-reduced-motion` disables the zoom animation and the popup/story transitions.
 - Audio starts only after a user gesture; music and click effects have separate on/off switches in the About panel, which is reachable from every screen; nothing in the app is audio-only.
-
-Not covered:
-
-- No formal WCAG 2.1 AA audit has been run, and there has been no screen-reader testing.
-- High-contrast / forced-colors modes have not been tested.
-- The music/effect choices are not remembered across page reloads, and there is no volume control.
 
 ## Credits
 
 - Moon basemap: NASA Scientific Visualization Studio, CGI Moon Kit (LROC colour).
 - Mars basemap: USGS Astrogeology, MOLA colour hillshade.
 - Both basemaps are public domain.
-- Art credits will be added alongside those assets.
+- Art: Nib’s portrait and the artifact sprites are SI-generated (see [SI use](#super-intelligence-si-use)); the Last Transmission logo and favicon were made for this project.
 - All background music tracks are composed by **Scott Buckley** ([www.scottbuckley.com.au](https://www.scottbuckley.com.au)) and licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/):
 - All sound effects are from **Hove Audio** ([https://hoveaudio.itch.io/](https://hoveaudio.itch.io/)).
 
 * **"At The End Of All Things"** – Intro & Outro theme
 * **"Clear Skies"** – Story introduction theme
 * **"With These Hands"** – Act III transition theme
+
+Submission attribution: “At The End Of All Things”, “Clear Skies”, and “With These Hands” by Scott Buckley — released under CC-BY 4.0. www.scottbuckley.com.au
 
 Design decisions, roster, and open questions live in [PLAN.md](PLAN.md).

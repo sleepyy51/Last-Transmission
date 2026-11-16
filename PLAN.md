@@ -1,8 +1,8 @@
 # Last Transmission — build plan
 
 **Event:** NASA Space Apps Challenge 2026 (virtual, team of 3, 48 hours)
-**Last decision:** 2026-11-14
-**Status:** agreed; scaffold in progress
+**Last decision:** 2026-11-15
+**Status:** MVP complete; submission pending
 
 > Revisit this file whenever a decision changes. Each change gets a line in the
 > decision log at the bottom. Do not silently diverge from it.
@@ -11,7 +11,7 @@
 
 ## 1. What we're building
 
-**Last Transmission** — *Forgotten astral artifacts from mankind.*
+**Last Transmission** — *Forgotten astral artifacts by mankind.*
 
 An interactive, pixel-art map of NASA hardware still sitting on the Moon and Mars,
 and the science it made possible.
@@ -22,8 +22,9 @@ and Mars — and the science it made possible.*
 - Audience: **ages 9–13** and casual space fans.
 - Story: one guided sequence in three acts — Moon → Mars → deep space — with free
   exploration always available.
-- Every artifact gets an in-character "last transmission" line plus factual copy and
-  a source link. Accuracy is not optional; the challenge scores it.
+- Every artifact gets an in-character "last transmission" line plus a narrated story,
+  a fact-check, and a source link. Accuracy is not optional; the challenge
+  scores it.
 
 ## 2. Locked decisions
 
@@ -36,10 +37,10 @@ and Mars — and the science it made possible.*
 | Map interaction | **Zoom-to-pin** via CSS transform + lat/lon → percentage projection. No free drag/pan |
 | Mobile | Mobile-first. On phones the map's default state is zoomed to the current artifact; pull back for overview. One breakpoint (~768px): side drawer on desktop, bottom sheet below |
 | Art | 16×16 sprite grid, rendered at 3×. Storybook treatment for panels/typography. 16-bit bevels for controls. Team artist + AI + pixel tools, capped 6–8 h |
-| Story delivery | Title screen → map home → guided tour + free explore. Story panel: in-voice line + 60–90 words factual + source link |
+| Story delivery | Title screen → map home → guided tour + free explore. Story panel: in-voice line, Nib's click-to-open narrated story + fact-check (plain 60–90 word story as fallback), source link |
 | Audio | SFX + ambient, CC, credited to Scott Buckley. Compressed, lazy-loaded, starts on "Begin transmission". Mute toggle. Purely decorative — app must work without it |
 | Accessibility | Cheap set (see §8), stated honestly in the README |
-| Verification | `npm run build` gates every merge; one `node --test` file for the projection; Playwright smoke suite for the five-step list and served assets |
+| Verification | `npm run build` gates every merge; `node --test` for projection, content, and beat splitting; Playwright smoke suite for the five-step list and served assets |
 | Hosting | Public repo → GitHub Actions → GitHub Pages, project path, no custom domain |
 | Base path | `base: '/Last-Transmission/'` in `vite.config.js` |
 | Docker | Compose is **dev only** — one Node service, no image build, no backend |
@@ -68,7 +69,16 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
   "transmission": "Tranquility Base here. The Eagle has landed.",
   "story": "60–90 words. What it is, why it was sent, what science it made possible.",
   "image": "/artifacts/apollo-11-descent-stage.png",
-  "source": "https://nssdc.gsfc.nasa.gov/..."
+  "source": "https://nssdc.gsfc.nasa.gov/...",
+  "narrator": {
+    "story": ["First paragraph in the artifact's voice.", "Second paragraph."],
+    "factCheck": [
+      {
+        "claim": "What the story says.",
+        "correction": "What the records say, in Nib's voice."
+      }
+    ]
+  }
 }
 ```
 
@@ -77,6 +87,9 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
   map ignores them; the starfield layout uses a manual position instead.
 - `image` points at a 16×16-grid sprite in `public/artifacts/`.
 - `source` is the NSSDCA or mission catalogue page — required, never empty.
+- `narrator` is optional. When present, clicking Nib opens a popup with her
+  first-person story, told one beat at a time; the fact-check follows the last
+  beat. `story` stays as the plain factual fallback for entries without a narrator.
 - The writer owns this file. Reordering the array reorders the tour; no code change.
 
 ## 5. Roster (12)
@@ -147,6 +160,7 @@ Keep it this flat. No index barrels, no context providers unless a prop chain ge
 - Body text ≥ 16 px; contrast ≥ 4.5:1.
 - Alt text on every artifact image; decorative sprites get `alt=""`.
 - `aria-live` announcement when the tour advances.
+- Nib's popup takes focus when opened and returns it to its button when closed.
 - `prefers-reduced-motion`: no zoom animation, no drifting stars.
 - Mute control visible and persistent; nothing essential is audio-only.
 - README states what is covered and what is not. No audit claimed.
@@ -154,10 +168,10 @@ Keep it this flat. No index barrels, no context providers unless a prop chain ge
 ## 9. Verification
 
 - `npm run build` in CI — a broken build cannot deploy.
-- `node --test` for `projection.js` (built into Node, zero dependencies).
+- `node --test` for projection, narrator content integrity, and beat splitting (built into Node, zero dependencies).
 - `npm run test:smoke` — Playwright against the dev server: title load, the full
-  12-stop tour, zoom-to-pin projection on Moon/Mars, the deep-space pins, mute
-  persistence, and served favicon/logo/artifact icons.
+  12-stop tour, Nib's popup and fact-check, zoom-to-pin projection on Moon/Mars,
+  the deep-space pins, mute persistence, and served favicon/logo/artifact icons.
 - Manual check before the video is recorded (headless does not assert audio):
   1. Title screen loads; "Begin transmission" starts audio and the tour.
   2. Tour advances through all 12 stops; next/prev works at act boundaries.
@@ -194,10 +208,11 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 
 ## 12. Risks and open questions
 
-- **AI-generated assets** — confirm the event's rules on generative content before
-  relying on any AI-made sprite.
-- **Scott Buckley audio licence** — confirm the exact licence and required credit
-  string; a missing CC-BY credit is a judging risk.
+- **AI-generated assets** — confirmed: SI use is permitted, but generated images need
+  a visible watermark and code/data need disclosure. Nib's portrait and the artifact
+  sprites carry an “AI” mark; README and About disclose the tools.
+- **Scott Buckley audio licence** — confirmed CC BY 4.0. Credit appears in README, the
+  About panel, and the submission description with the required attribution string.
 - **Content is the bottleneck.** Twelve researched entries in 48 hours cannot be
   compressed at the end.
 - **Late audio** — never build the demo video around audio that has not landed.
@@ -214,3 +229,6 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 | 2026-11-15 | Click SFX wired from the Hove Audio pack (one shared click, sources kept in `assets-src/music/sfx/`). The standalone mute button became an About panel reachable from every screen, holding the credits plus separate music and click-effect switches. |
 | 2026-11-15 | Music transitions added on the existing elements: 800 ms crossfade between themes, 800 ms fade-in on start, 300 ms fade-out/in on the music switch. Reduced motion does not apply — audio fades are not visual motion. |
 | 2026-11-15 | Added a Playwright smoke suite to CI (system Chrome, no browser download). It automates the §9 five-step list and checks that favicon, logo, and artifact icons are served. Narrows the “no test suite” non-goal. |
+| 2026-11-15 | Added Nib, a Martian cat narrator, to every tour stop: a first-person story plus a “Was that all true?” fact-check drawn from `Narrator corrections.md`, with new stories for Viking 1, Ingenuity, NEAR Shoemaker and Dawn, and an Apollo 17 rewrite of the ALSEP entry. The cat portrait ships as a 420 px WebP; the original SVG stays in `assets-src/`. |
+| 2026-11-15 | Nib's story became a click-to-open popup: hidden until Nib or “Tell me a story” is clicked, told one beat at a time, with the fact-check inside the popup after the last beat. On desktop it floats above the portrait (the panel leaves only ~75 px below her); on phones it flows inside the bottom sheet. The old “Was that all true?” `<details>` was removed. |
+| 2026-11-15 | SI compliance: Nib's portrait is SI-generated (confirmed from its C2PA manifest) and the artifact sprites are SI-generated; code, tests, and documentation were developed with Claude Code. Added visible “AI” watermarks to the 13 displayed images plus an in-app badge on Nib, and disclosed where/how SI was used in README, About, and the submission. Confirmed Scott Buckley's CC BY 4.0 attribution. |

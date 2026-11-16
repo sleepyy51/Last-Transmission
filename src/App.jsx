@@ -56,7 +56,7 @@ export default function App() {
           alt="Last Transmission logo"
         />
         <h1>Last Transmission</h1>
-        <p className="subtitle">Forgotten astral artifacts from mankind.</p>
+        <p className="subtitle">Forgotten astral artifacts by mankind.</p>
         <p className="pitch">
           An interactive pixel-art map of NASA hardware still sitting on the
           Moon, Mars and Deep Space — with the science it made possible.

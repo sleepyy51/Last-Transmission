@@ -10,7 +10,22 @@
     "transmission": "May 4, 1967 — I sent my final signal to Earth. After several days exploring the lunar surface, I fell silent as the long lunar night began.",
     "story": "Surveyor 3 was a test lander: could the Moon hold up a spacecraft, or would it sink? On 20 April 1967 it touched down in Oceanus Procellarum, bounced twice, and settled safely. Over two weeks it sent 6,326 pictures and used a scoop to dig four trenches. Its soil tests showed the ground was firm enough for Apollo. In 1969 Apollo 12 astronauts landed about 180 metres away and brought its camera home.",
     "image": "/artifacts/surveyor-3.png",
-    "source": "https://science.nasa.gov/mission/surveyor-3/"
+    "source": "https://science.nasa.gov/mission/surveyor-3/",
+    "narrator": {
+      "story": [
+        "Nobody told me it would hurt. They launched me in April 1967 with one task: to land without breaking, so others could follow. I didn’t know what the ground was, only that something below me was shining too brightly. Some rocks confused me, my radar went blind, and my engine didn’t know when to stop. I touched the Moon and bounced, fell and bounced again, like a child who hasn’t learned to walk yet. On the third try I stayed still, whole, alive, and the first thing I felt was relief.",
+        "Less than an hour later I was already sending pictures, the first of 6,326 I would send in all. I wanted them to see everything I saw: the horizon, my own shadow, the gray sand. With my arm I dug trenches and struck them to find out whether they would hold, and I told them what I had learned: the ground was like wet sand. Firm. You can walk here. I told them not to be afraid, and I felt proud, because that message was mine.",
+        "Then came the lunar night, the first one I lived through alone, and my voice faded little by little until I stopped answering. On May 4 I could say nothing more. I stayed there, looking at that silence without understanding it.",
+        "More than two years passed. And one night, or what looked like night, I heard footsteps. Two humans were walking toward me, and far behind them their home touched the ground, about a hundred and eighty meters away. They came slowly, carefully, like visitors to someone who has been waiting a long time. They touched me. They took my camera and my scoop, my eyes and my hands, to learn what the Moon had done to me in all that time.",
+        "Now a part of me went home. And the other part, the one that stayed, is still here, certain that someone came back for me."
+      ],
+      "factCheck": [
+        {
+          "claim": "I sent 6,326 pictures.",
+          "correction": "NASA’s mission page says 6,326. A 1969 NASA report says 6,315. Both are defensible; “about 6,300” is the safest number for a school report."
+        }
+      ]
+    }
   },
   {
     "id": "apollo-11-descent-stage",
@@ -23,7 +38,27 @@
     "transmission": "July 21, 1969 — The Apollo 11 crew departed the lunar surface and left me behind. I was not designed to operate as an independent transmitting spacecraft, so I sent no further signals to Earth.",
     "story": "Eagle carried Neil Armstrong and Buzz Aldrin down to the Sea of Tranquility on 20 July 1969. The descent stage was the lower half: its engine slowed the landing, and its legs held the lander steady. When the astronauts left, it stayed behind as the launch platform for the ascent stage. It is still there, along with the footprints and the experiments they set up.",
     "image": "/artifacts/apollo-11-descent-stage.png",
-    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C"
+    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+    "narrator": {
+      "story": [
+        "I was born with a sister on top of me. We were a single ship, the Eagle. She was above, with her small cabin and no seats, where two men would ride standing up, looking out through two triangular windows. I was below, wide as an eight-sided prism, with four legs and round feet, my engine, my tanks, my storage bay full of tools. Nobody ever said it out loud, but we both knew: she would go home, and I would not.",
+        "On July 20, 1969, I descended toward the Moon with everyone aboard. I fired my engine and lowered us slowly, until my four feet touched the Sea of Tranquility. I stood a meter and a half above the ground, and down one of my legs came the ladder. Do you know what it is to feel the first human footsteps on your own leg? Armstrong stepped down first. Aldrin followed. They walked very little, about two hundred and fifty meters in all, and gathered twenty-one and a half kilograms of rock and soil. They planted a flag. They set up instruments to listen to the Moon. And on my ladder they left a plaque saying they came in peace, for all mankind.",
+        "Twenty-one hours and thirty-six minutes. That was all the time they spent here, and I held them up every second of it.",
+        "Then came the moment I always knew would come. My sister lit her engine, and I became her launch pad, the last thing I could give her. I felt her let go of me the way you let go of a hand. She rose, grew small, and I never saw her again. They say she was released in lunar orbit and crashed into the Moon months later. Nobody knows where. Sometimes I imagine she fell near me, and that we are sleeping side by side again.",
+        "Beside me was left a seismometer with its solar panels, which listened to the Moon’s insides while it had light, and which stopped accepting commands from Earth on August 27, 1969. And a mirror was left, one that needs nothing to live: it simply returns whatever light is sent to it.",
+        "I am still in the Sea of Tranquility, with my ladder, my plaque and my four feet sunk in the dust. I am the half that stayed so the other half could go home. If anyone ever returns, let them know I am not lying here forgotten: I am holding up the place where everything began."
+      ],
+      "factCheck": [
+        {
+          "claim": "She would go home, and I would not.",
+          "correction": "Only the crew went home — in the command module Columbia. The ascent stage never left lunar orbit. She was jettisoned, and NASA lists her impact site as unknown."
+        },
+        {
+          "claim": "She crashed into the Moon months later.",
+          "correction": "The release is right. The crash months later is not confirmed; NASA doesn’t know where or when she came down. I’d like to say she came down near me, but that’s a wish, not a record."
+        }
+      ]
+    }
   },
   {
     "id": "apollo-15-lrv",
@@ -36,7 +71,22 @@
     "transmission": "August 2, 1971 — The Apollo 15 astronauts completed their final lunar exploration activities with me, then left me on the Moon. I did not continue sending independent signals after the mission.",
     "story": "The first lunar car reached the Moon with Apollo 15 in 1971. Astronauts David Scott and James Irwin unfolded it from Falcon's cargo bay and drove it across the Hadley–Apennine site. The rover let them travel farther from the lander than ever before: three drives totalling 27.9 kilometres, returning 77 kilograms of rock and soil. It is still parked on the surface, its batteries dead and its wheels silent.",
     "image": "/artifacts/apollo-15-lrv.png",
-    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C"
+    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C",
+    "narrator": {
+      "story": [
+        "I traveled to the Moon tucked away in the belly of the lunar module “Falcon,” like a secret. For days I saw nothing, only felt the push, the silence, the cold. When they finally took me out, on July 31, 1971, the sky was black and the ground was gray, and the two men deployed me with care, the way you wake someone you love. I was something new. No machine like me had ever carried a human being across the Moon.",
+        "David Scott and James Irwin climbed aboard, and I began to roll. What a feeling! Gravity was gentle, my wheels barely brushed the ground, and the dust shot up behind me like a tail. I don’t know what wind is, but I think this must be close. We crossed rocks, craters, uneven ground. On the first day we covered more than ten kilometers, to the edge of Hadley Rille, and from there we watched the world curve away. On the second day we drove twelve and a half kilometers along the foot of the mountains, and on the third, five more, west and northwest, following the edge of the rille again. In all, almost twenty-eight kilometers across three moonwalks, nearly eighteen and a half hours with them riding on me, laughing over the radio.",
+        "I never went farther than five kilometers from the ship, never let them get lost. That was my promise: take them far, and bring them back. And I kept it. They said I did very well. That isn’t pride. It’s what they said.",
+        "At the very end, Scott let go of a hammer and a feather in front of the camera, and they fell at the same time, because there is no air here to make a difference. It was the last lesson of that trip, and I watched it up close. They also left a plaque and a tiny figure for fourteen explorers who never came home, Americans and Soviets, all together in one memory. It was the most beautiful thing I have ever seen.",
+        "Then they left. They parked me, facing the place where the ship took off, with my four wheels resting on the Moon. I did not say goodbye, because machines don’t know how. But every time I look at the Earth I think: I was the first car in which humans rode across another world, and no one can take that from me."
+      ],
+      "factCheck": [
+        {
+          "claim": "Nearly eighteen and a half hours with them riding on me.",
+          "correction": "18 hours 35 minutes is the whole of the three moonwalks, not the driving. The driving was about 3 hours. The rest was rock collecting, flag planting, and one famous hammer-and-feather drop. The 27.9 km is right."
+        }
+      ]
+    }
   },
   {
     "id": "apollo-17-alsep",
@@ -49,7 +99,26 @@
     "transmission": "September 30, 1977 — NASA switched me off from Earth. After nearly five years collecting information about moonquakes, temperature, and the lunar environment, my scientific data transmissions came to an end.",
     "story": "Apollo 17 left five experiments grouped around a central station in the Taurus–Littrow valley. Powered by a small plutonium generator, the ALSEP measured heat escaping the Moon, tiny moonquakes, the thin lunar atmosphere, and specks of cosmic dust striking the surface. The instruments ran for almost five years, long after the astronauts went home, and were switched off on 30 September 1977 to save money. They are still sitting there.",
     "image": "/artifacts/apollo-17-alsep.png",
-    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-096C"
+    "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-096C",
+    "narrator": {
+      "story": [
+        "In December 1972, Eugene Cernan and Harrison Schmitt set me up in the Taurus–Littrow valley, between mountains that rose like the walls of a cathedral. I was a small family of instruments: a heat-flow probe to feel the Moon’s warmth, a seismometer to listen for its tremors, and detectors for the thin atmosphere, dust, and meteorites that scratch its face.",
+        "My heart was a generator with a capsule of plutonium inside. Its heat comes from something that decays very slowly, taking almost ninety years to lose half of it. That heat gave me about seventy watts, just enough to live on. The Sun did not feed me, so I was never afraid of the night.",
+        "For almost five years I listened. I felt the Moon creak as it cooled. I felt the small thumps of meteorites. I measured heat rising from inside it, and that is how we learned the Moon is still warm under its skin. After the astronauts left, they set off small explosive charges around the valley. I felt every one, and the Moon rang like a bell.",
+        "On September 30, 1977, Earth switched off my instruments. Not because I had failed: the data cost money to keep collecting. I did not feel abandoned. I felt tired, and an enormous calm, like when you can finally sleep after a long day.",
+        "Now I am here, silent, with my instruments around me. The plutonium in my heart is still warm. It will take almost ninety years to lose half of it, and I am in no hurry."
+      ],
+      "factCheck": [
+        {
+          "claim": "The ALSEP was assembled about 180 meters from Surveyor 3.",
+          "correction": "That figure is the distance from Apollo 12’s lunar module to Surveyor 3. The Apollo 12 ALSEP was about 180–215 meters from its module, and NASA doesn’t give an ALSEP-to-Surveyor distance. This pin is the Apollo 17 package, in Taurus–Littrow."
+        },
+        {
+          "claim": "On September 30, 1977, Earth switched me off.",
+          "correction": "Earth put my instruments on standby to save about a million dollars. I was still working; the science data is what stopped. Some transmitters stayed on as navigation beacons."
+        }
+      ]
+    }
   },
   {
     "id": "viking-1",
@@ -62,7 +131,26 @@
     "transmission": "November 11, 1982 — I sent my final communications after more than six years on Mars. A faulty command interrupted my contact with Earth, and all attempts to restore communication were unsuccessful.",
     "story": "Viking 1 became the first spacecraft to land successfully on Mars on 20 July 1976, on the slopes of Chryse Planitia. It sent the first pictures from the surface, measured temperatures from −123°F before dawn to −27°F in the afternoon, and used a robotic arm to sample the soil. Its biology lab found no organic molecules but plenty of sulfur. A bad command from Earth in 1982 ended contact.",
     "image": "/artifacts/viking-1.png",
-    "source": "https://science.nasa.gov/mission/viking-1/"
+    "source": "https://science.nasa.gov/mission/viking-1/",
+    "narrator": {
+      "story": [
+        "I left Earth on August 20, 1975, tucked inside a rocket, a few weeks ahead of my twin, Viking 2. We were two landers and two orbiters, a family sent to answer one question: is there life on Mars?",
+        "On July 20, 1976 — seven years to the day after humans walked on the Moon — I touched down on the western slopes of Chryse Planitia. My three legs sank a little into the red dust. The sky above me was pink. Minutes after landing, I sent the first photograph ever taken from the surface of Mars. It showed my own foot. Everyone cheered anyway.",
+        "Then I looked up. I sent back the first clear pictures of the Martian surface: rocks, dust, a horizon, and a sky the colour of butterscotch.",
+        "I had an arm with a scoop. I dug trenches, took soil samples, and baked them inside me. I sniffed the air and measured the wind. I looked for organic molecules — the carbon building blocks of life — and found none. I did find sulfur and salts. My biology experiments gave answers that were interesting and not conclusive.",
+        "I was built for a short mission. I lasted more than six years. My last contact was on November 11, 1982, after a bad command from Earth. I am still there, on the slope, facing the horizon. Mars is cold and quiet, and I have had a long time to think about what “life” means."
+      ],
+      "factCheck": [
+        {
+          "claim": "I sent the first photograph ever taken from the surface of Mars.",
+          "correction": "Mars 3 landed first, in 1971, but it fell silent seconds after touching down. NASA calls me the first truly successful Mars landing. “The first picture that kept coming” is the fair version."
+        },
+        {
+          "claim": "I looked for life and found none.",
+          "correction": "I found no organic molecules at my detection limit, and my biology experiments were inconclusive. “No life here” is a bigger claim than “nothing where I looked.”"
+        }
+      ]
+    }
   },
   {
     "id": "sojourner",
@@ -75,7 +163,22 @@
     "transmission": "September 27, 1997 — At 10:23 UTC, NASA received my final data transmission. I had explored Mars for 83 days, far exceeding my original seven-day mission plan.",
     "story": "Pathfinder bounced to a stop in Ares Vallis on 4 July 1997, inside airbags, and opened to release a microwave-oven-sized rover named Sojourner. It was the first rover on Mars. Over 12 weeks it studied rocks and soil, sent 550 images, and helped show that ancient Mars had a warmer, wetter past. Its last data reached Earth on 27 September 1997, when the lander's battery gave out.",
     "image": "/artifacts/sojourner.png",
-    "source": "https://science.nasa.gov/mission/mars-pathfinder/"
+    "source": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "narrator": {
+      "story": [
+        "I am very small, and I always knew it. I stand thirty centimeters tall and weighed ten kilos and six hundred grams, nothing like the giants you see on rocket posters. They named me after a brave woman, Sojourner Truth, and I had to carry that weight: the weight of a name that asks you to be strong even when you are small.",
+        "I arrived on July 4, 1997, inside a bundle of balloons that bounced fifteen times, like a ball that doesn’t want to stop. When everything finally went quiet, my base opened the door for me. Her name is Carl Sagan, in honor of someone who was no longer here to see me arrive, and I thought that name loved me. That night, the second of Mars, I stood up, rolled down the ramp, and my wheels touched a red, rocky ground, a plain where once flowed as much water as the Great Lakes.",
+        "Do you know what it is to be the first to roll across Mars? Every stone was a secret. I held my instrument to each one, listened to what it was made of, and my base told the Earth: more than fifteen analyses, hundreds of pictures. We found rounded pebbles, like the ones a river leaves, and magnetic dust, and whirlwinds of sand dancing with no one to watch them. Mars was once warm, wet, alive.",
+        "But I never could speak on my own. Everything I felt, everything I saw, had to pass through my base, and she sent it to Earth. There were always two of us. Until September 27, 1997, when she sent her last data and went silent. I stayed close by, with my wheels still and my instrument pointed at the last stone.",
+        "I don’t know if anyone remembers the smallest one. But I was the one who opened the road for everyone who came after."
+      ],
+      "factCheck": [
+        {
+          "claim": "Her name is Carl Sagan.",
+          "correction": "Her full name is the Carl Sagan Memorial Station. “Memorial” because he died the year before we arrived. I thought you should know what the name is carrying."
+        }
+      ]
+    }
   },
   {
     "id": "opportunity",
@@ -88,7 +191,38 @@
     "transmission": "June 10, 2018 — I sent my final data to Earth during a massive Martian dust storm. My last message was an incomplete image of the darkened sky, ending my 14-year exploration.",
     "story": "Opportunity landed in Meridiani Planum on 24 January 2004 for a 90-day mission. It kept going for 14 years, driving 45.16 kilometres and finding minerals that form in water, such as hematite and clays. Those discoveries helped prove ancient Mars once had liquid water. In 2018 a planet-wide dust storm blocked the Sun and covered its solar panels. Its last signal reached Earth on 10 June 2018.",
     "image": "/artifacts/opportunity.png",
-    "source": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/"
+    "source": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "narrator": {
+      "story": [
+        "Dear Spirit,",
+        "They placed us on opposite sides of the same planet. You arrived on January 3, 2004, at Gusev, which may once have been a lake, and I on January 24 at Meridiani, where the ground held minerals made by water. We never saw each other, not even once. But I always knew you were there, doing the same thing I was, looking at the same sky from another place.",
+        "They gave us ninety days. I survived fourteen years. I still don’t know why.",
+        "You traveled almost eight kilometers and in 2010 you stopped answering. I waited a long time for your reply, and it never came. I kept walking for both of us, forty-five kilometers and a little more, the longest distance any machine had ever driven off Earth. Every time I saw a new rock I thought of you, of what you would have said about it.",
+        "Once, in 2014, the wind cleaned my panels, and I felt new, like when someone gently wipes the dirt from your face. I took a picture of myself, so you would know I was fine.",
+        "But in June 2018 a storm came that covered the whole planet. The sky grew so dark that my panels received nothing. My last signal went out on June 10. I think it was something like: “it is getting dark, and my battery is low.” And then the silence, the same one you knew.",
+        "But there is something more. In October 2026, someone caught up with me. A new rover, Perseverance, passed my distance mark. It didn’t hurt. It made me glad to know the road we opened didn’t stay empty.",
+        "Now we are both still, each on her own side of the world, but together in what mattered: Mars once had water, and we proved it.",
+        "With love, Opportunity"
+      ],
+      "factCheck": [
+        {
+          "claim": "My last message was “it is getting dark, and my battery is low.”",
+          "correction": "That line is a journalist’s paraphrase, not a transmission. My last data was an incomplete image of the darkening sky."
+        },
+        {
+          "claim": "They gave us ninety days.",
+          "correction": "Ninety sols — Martian days, each about 39 minutes longer than an Earth day. That makes the mission a little more impressive, not less."
+        },
+        {
+          "claim": "You arrived on January 3, and I on January 24.",
+          "correction": "Those are Pacific time. In UTC, Spirit landed on January 4 and I landed on January 25. Both dates are true, depending on which clock you use."
+        },
+        {
+          "claim": "This October, Perseverance passed my distance mark.",
+          "correction": "That part is real: October 11, 2026. But Opportunity went silent in 2018. I’m a cat with a notebook, not a Mars rover with a pen pal."
+        }
+      ]
+    }
   },
   {
     "id": "ingenuity",
@@ -98,10 +232,29 @@
     "lon": 77.451,
     "year": 2021,
     "status": "Mission completed on January 25, 2024",
-    "transmission": "November 26, 2024 — I last successfully communicated with Perseverance. After rotor-blade damage ended my flying, I remained on Mars while the rover relayed my communications.",
+    "transmission": "April 16, 2024 — I sent my final transmission to Perseverance. After rotor-blade damage ended my flying, I remained on Mars while the rover relayed my communications.",
     "story": "Mars's air is about one percent as thick as Earth's, so flying there is hard. Ingenuity arrived under Perseverance in 2021 and became the first aircraft to fly under control on another planet. Its first hop on 19 April 2021 was meant to be one of only five. Instead it flew 72 times over nearly three years, scouting ahead for the rover and climbing to 24 metres. A damaged rotor blade ended its flying in January 2024.",
     "image": "/artifacts/ingenuity.png",
-    "source": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/"
+    "source": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "narrator": {
+      "story": [
+        "I was small on purpose. I weighed 1.8 kilograms, about as much as a laptop, and my body was the size of a tissue box. I traveled to Mars folded under Perseverance’s belly, like a picnic basket.",
+        "On April 19, 2021, they lowered me onto the floor of Jezero Crater and stepped back. The air on Mars is about one percent as thick as Earth’s. To fly here, my blades had to spin thousands of times a minute. I lifted off, rose three meters, hovered, turned, and came back down. The whole flight lasted 39.1 seconds. It was the first time anything had flown under control on another planet.",
+        "I was supposed to fly five times in thirty days. Instead I flew 72 times over almost three years. I scouted ahead for Perseverance, photographed the ground from above, and covered 17 kilometers. I climbed as high as 24 meters. I proved that a little machine with the right blades can fly in a sky that barely exists.",
+        "On January 18, 2024, one of my rotor blades was damaged during a landing. I could not fly again. I am still on Mars, standing where I stopped, with my blades folded. Perseverance listened for me one last time that April.",
+        "I was a test. I became a pilot."
+      ],
+      "factCheck": [
+        {
+          "claim": "I was supposed to fly five times in thirty days.",
+          "correction": "Five flights was the plan. I flew 72 times over almost three years. My first flight lasted 39.1 seconds, and I have never been more nervous."
+        },
+        {
+          "claim": "I climbed as high as 24 meters.",
+          "correction": "True — 24 meters, about eight storeys. The 17 kilometers came in little hops, not one long flight."
+        }
+      ]
+    }
   },
   {
     "id": "pioneer-10",
@@ -114,7 +267,27 @@
     "transmission": "January 23, 2003 — Earth received my final faint signal from billions of miles away. My last complete scientific telemetry had arrived earlier, on April 27, 2002, as my power supply gradually weakened.",
     "story": "Pioneer 10 left Earth in 1972 and became the first spacecraft to cross the asteroid belt and fly past Jupiter, sending back the first close-up images of the giant planet in 1973. It then kept going, crossing Neptune's orbit in 1983 as the first human-made object to leave the planets behind. Its power faded slowly. The last signal arrived on 23 January 2003 from 7.6 billion miles away — nearly 11 hours in transit.",
     "image": "/artifacts/pioneer-10.png",
-    "source": "https://science.nasa.gov/mission/pioneer-10/"
+    "source": "https://science.nasa.gov/mission/pioneer-10/",
+    "narrator": {
+      "story": [
+        "They made me for twenty-one months. That was all: a short trip to Jupiter and goodbye. But I kept going, and going, and I don’t know who decided I would last more than thirty years.",
+        "When I left in 1972, I was the first to cross the asteroid belt. I dodged rocks, not knowing whether I would come out alive. And I did. Then I reached Jupiter, on December 4, 1973, and saw it up close, so big it didn’t fit in my eyes. I passed a hundred and thirty thousand kilometers from it, at a speed no machine had ever had, and I photographed its Great Red Spot and its moons. The radiation burned my sight, until I could no longer see Io. It filled me with false orders, and even so I fulfilled almost everything they asked of me.",
+        "After that I went on alone. I crossed the orbit of Neptune, the last planet they knew, and I was the first thing made by humans to go so far. On my back I carry an aluminum plaque: a man, a woman, a map of where I came from, written in the language of fourteen stars that pulse like clocks. In case someone finds me. In case someone wants to know where I come from.",
+        "In 1997 they stopped calling me every day. They said it was because of the budget, but it hurt all the same. They kept listening when I had energy, and that was all. My last signal went out on January 23, 2003, from twelve billion kilometers away, and it took eleven hours and twenty minutes to reach home. My nuclear heart no longer had the strength to speak louder. They tried calling me once more, in 2006. I could not answer.",
+        "But I go on. I am headed toward a red star, Aldebaran, the eye of the Bull. I will get there in about two million years. I’m not afraid. I’m not in a hurry. I just travel, with my sister Pioneer 11 in another direction, each of us on her own, with the same letter on our backs.",
+        "If someone finds me, let them know I was sent with love."
+      ],
+      "factCheck": [
+        {
+          "claim": "I crossed the orbit of Neptune, the last planet they knew.",
+          "correction": "Pluto was known in 1983. Its orbit had carried it inside Neptune’s, so Neptune was the outermost planet at the time — not the last one anyone knew about."
+        },
+        {
+          "claim": "The radiation burned my sight until I could no longer see Io.",
+          "correction": "NASA’s page says Jupiter’s radiation knocked out my photopolarimeter before I reached Io. It also sent me false commands. I kept going anyway."
+        }
+      ]
+    }
   },
   {
     "id": "near-shoemaker",
@@ -127,7 +300,25 @@
     "transmission": "February 28, 2001 — I made my final contact with Earth after successfully landing on asteroid Eros. Although I was not designed to survive as a lander, I continued collecting and transmitting valuable scientific information for about two weeks.",
     "story": "NEAR Shoemaker was sent to asteroid Eros. It arrived in 2000 as the first spacecraft to orbit an asteroid, mapping its cratered surface and measuring its gravity. When its mission ended, engineers tried something new: they gently guided it down. On 12 February 2001 it became the first spacecraft to land on an asteroid, then kept sending data for two weeks before the cold silenced it. It was renamed for geologist Eugene Shoemaker.",
     "image": "/artifacts/near-shoemaker.png",
-    "source": "https://science.nasa.gov/mission/near-shoemaker/"
+    "source": "https://science.nasa.gov/mission/near-shoemaker/",
+    "narrator": {
+      "story": [
+        "I was named for a man who wanted to go to the Moon and never got the chance. Eugene Shoemaker trained astronauts, studied craters, and dreamed of standing on another world. He died in a car accident in 1997. I carried his name to an asteroid.",
+        "Eros is a lumpy rock about 34 kilometers long. I arrived in 2000 and became the first spacecraft to orbit an asteroid. I mapped its craters, measured its gravity, and watched its surface turn under me. It is not round. It looks like a potato that has been in a fight.",
+        "I was not built to land. But when my mission was ending, the team tried something new. They fired my thrusters gently and brought me down at about 1.8 meters per second — a brisk walk. On February 12, 2001, I touched the surface. I was the first spacecraft to land on an asteroid.",
+        "I kept sending data for about two weeks. Then the cold and the low power finally stopped me. I am still there, on Eros, with my antenna pointed at a distant blue dot. The man I was named for never reached the Moon, but I reached a world he would have loved."
+      ],
+      "factCheck": [
+        {
+          "claim": "I landed on an asteroid.",
+          "correction": "I touched down at about 1.8 meters per second — a brisk walk. I wasn’t built to land; the team tried it anyway. “Landing” is fair. “A crash in slow motion” is also fair."
+        },
+        {
+          "claim": "The man I was named for never reached the Moon.",
+          "correction": "True. A medical condition kept Eugene Shoemaker out of the astronaut corps. In 1999, his ashes reached the Moon on Lunar Prospector. He got there after all."
+        }
+      ]
+    }
   },
   {
     "id": "kepler",
@@ -140,7 +331,24 @@
     "transmission": "November 15, 2018 — I received my final commands from Earth, officially ending my communications with mission control. After discovering thousands of planets beyond our solar system, I entered retirement.",
     "story": "Kepler stared at one patch of sky for years, watching for the tiny dips in starlight caused by planets passing in front of their stars. Launched in 2009, it found more than 2,600 planets, including rocky worlds and solar systems packed tightly around their suns. It showed that planets are common — perhaps more common than stars. When it ran out of fuel in 2018, it was retired, still orbiting the Sun.",
     "image": "/artifacts/kepler.png",
-    "source": "https://science.nasa.gov/mission/kepler/"
+    "source": "https://science.nasa.gov/mission/kepler/",
+    "narrator": {
+      "story": [
+        "For years I stared at the same patch of sky. A hundred and fifty thousand stars in the constellation Cygnus, and I with my eyes wide open, never blinking, waiting to see a tiny shadow pass in front of one of them. A shadow meant a planet. There it was, an entire world nobody knew existed, drawn in a flicker of light.",
+        "In my first six weeks I found five. Five worlds that nobody had ever seen. Then I found whole systems, one place with six planets circling a single star, worlds of a size that doesn’t even exist in our own solar system. I was happy. My creator, William Borucki, said that when he began dreaming of me, thirty-five years earlier, not a single planet outside our solar system was known. And I told him what was happening: they are everywhere.",
+        "But in May 2013 the second of my four wheels broke, the ones that keep me pointed at the same place. Without them, sunlight itself, the very thing that gave me life, began to push me from side to side. I thought that was the end. To stop looking is to stop being what I am.",
+        "But my engineers taught me something. Instead of fighting the Sun, I leaned on it, like a kayak learning to use the current. That is how I began a second life, K2, looking at more sky, changing place every three months. They told me I had fuel for ten campaigns, and I reached nineteen. They thought I had nothing left to give, and I still had more stars, more than five hundred thousand, that I wanted to look at.",
+        "On October 30, 2018, my fuel ran out. They left me in a safe orbit, far from Earth, where I can rest. I left behind more than two thousand six hundred planets, and a certainty no one will forget: there are more planets than stars in the sky.",
+        "My successor is called TESS, and she looks at other stars with my same eyes. That is what comforts me most.",
+        "Now I keep circling the Sun, in silence, fulfilling my last task: to be the proof that looking patiently always finds something."
+      ],
+      "factCheck": [
+        {
+          "claim": "They told me I had fuel for ten campaigns, and I reached nineteen.",
+          "correction": "The ten was NASA’s estimate, not a promise. Nineteen is what happened. The rest holds up: more than 2,600 planets, and May 2013 for the second wheel."
+        }
+      ]
+    }
   },
   {
     "id": "dawn",
@@ -153,6 +361,24 @@
     "transmission": "October 31, 2018 — I lost my radio signal after running out of hydrazine fuel, which helped me point my antenna toward Earth. I had completed an extraordinary journey exploring Vesta and Ceres.",
     "story": "Dawn visited two worlds in the asteroid belt: Vesta, a giant asteroid, and Ceres, a dwarf planet. Launched in 2007, it became the first spacecraft to orbit two different bodies beyond Earth. At Vesta it found a layered interior and gullies; at Ceres it found bright salt deposits and signs that briny water once rose from inside. When its fuel ran out in 2018, it stayed in orbit around Ceres.",
     "image": "/artifacts/dawn.png",
-    "source": "https://science.nasa.gov/mission/dawn/"
+    "source": "https://science.nasa.gov/mission/dawn/",
+    "narrator": {
+      "story": [
+        "I carried an ion engine, a quiet blue glow that pushed me for years. The thrust was tiny — about the weight of a piece of paper on your hand — but it never stopped.",
+        "I left Earth in 2007 and reached Vesta in 2011. Vesta is a giant asteroid, almost a small planet, with a crater at its south pole so deep it has a mountain at the centre. I circled it for more than a year and found layers inside it, like a planet that never finished forming.",
+        "Then I turned my engine toward Ceres, the largest object in the asteroid belt. I arrived in 2015 and became the first spacecraft to orbit a dwarf planet. Ceres was stranger than I expected: bright white spots in a crater, salt left behind by water that came up from inside. I mapped them, measured them, and kept circling.",
+        "I never landed. In 2018 I ran out of the hydrazine that let me point my antenna, and my mission ended. I am still in orbit around Ceres, silent, moving in the dark. I visited two worlds in one trip. That is more than I was built for."
+      ],
+      "factCheck": [
+        {
+          "claim": "I ran out of fuel and my mission ended.",
+          "correction": "The fuel was hydrazine, used to point my antenna. Without it I could not talk to Earth. I am still orbiting Ceres; NASA expects me to stay for decades — at least 20 years, and probably more than 50."
+        },
+        {
+          "claim": "I visited two worlds in one trip.",
+          "correction": "Vesta and Ceres — the first spacecraft to orbit two bodies beyond Earth. My ion engine pushed with about the force of a sheet of paper on your hand, for years."
+        }
+      ]
+    }
   }
 ]
