@@ -3,6 +3,7 @@ import AboutPanel from "./about/AboutPanel.jsx";
 import { useAudio } from "./audio/useAudio.js";
 import MapView from "./map/MapView.jsx";
 import Starfield from "./stars/StarField.jsx";
+import titleLogo from "../assets-src/logos/favicon-nobg.svg";
 
 export default function App() {
   const [view, setView] = useState("title");
@@ -51,7 +52,7 @@ export default function App() {
       <main className="screen">
         <img
           className="site-logo"
-          src={`${import.meta.env.BASE_URL}logo.svg`}
+          src={titleLogo}
           alt="Last Transmission logo"
         />
         <h1>Last Transmission</h1>
