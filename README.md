@@ -17,7 +17,7 @@ Twelve artifacts left behind by NASA missions, presented as one guided tour in t
 - **Title screen** — “Begin transmission” starts the guided tour; “Explore the map” goes straight to free exploration.
 - **Guided tour** — twelve stops in mission order. Each stop switches the map body, zooms to the artifact, and opens its story. **Finish** on the last stop returns to the title screen.
 - **Free explore** — Moon, Mars, and Deep space tabs; zoom-to-pin; an artifact list for each body.
-- **Story panel** — each stop has an in-character “last transmission”, a first-person story told by Nib, a Martian cat narrator, and a “Was that all true?” disclosure with Nib’s fact-check. A link to the NASA source stays at the bottom. Side drawer on desktop, bottom sheet on phones.
+- **Story panel** — each stop has an in-character “last transmission” and a first-person story told by Nib, a Martian cat narrator. Clicking Nib (or “Tell me a story”) opens a popup that tells the story one beat at a time; after the last beat it continues with Nib’s fact-check. A link to the NASA source stays at the bottom. Side drawer on desktop, bottom sheet on phones.
 - **Deep-space act** — no basemap for spacecraft that left the Moon and Mars, so the four deep-space entries sit on a starfield.
 - **Maps** — full-surface equirectangular 2:1 images, downscaled and rendered with `image-rendering: pixelated` inside a pixel-art bezel.
 - **Audio** — three looping Scott Buckley themes: the title and finish screens, the Moon and Mars story, and the deep-space act, plus a Hove Audio click effect on every control. Themes crossfade when the act changes, fade in on start, and fade out/in with the music switch. Music starts on the first interaction, is lazy-loaded, and music and effects have separate on/off switches in the About panel. Purely decorative.
@@ -29,7 +29,7 @@ Designed for ages 9–13 and casual space fans.
 | Challenge asks                                                         | Where it shows up                                                                                                                                                                                                          |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Tell the story of NASA’s discarded equipment                           | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`), each with an in-character “last transmission”.                                                               |
-| Explain what it is, why it was sent, and what science it made possible | Each story panel has a narrated first-person story, a fact-check disclosure that separates the tale from the record, and a NASA source link.                                                                               |
+| Explain what it is, why it was sent, and what science it made possible | Each story panel has a narrated first-person story, a fact-check that follows it to separate the tale from the record, and a NASA source link.                                                                               |
 | Teach school-age and casual space enthusiasts                          | A guided tour with no prior knowledge assumed, a pixel-art map, and stories written for ages 9–13.                                                                                                                         |
 | Use an interactive web format                                          | React + Vite single-page app: map, zoom-to-pin, tour controls, story panel, keyboard support.                                                                                                                              |
 | Consider accessibility of the format                                   | See [Accessibility](#accessibility) — what is covered and what is not.                                                                                                                                                     |
@@ -43,7 +43,7 @@ Requires Node 22+.
 ```sh
 npm ci
 npm run dev     # http://localhost:5173/Last-Transmission/
-npm test        # projection tests (node --test)
+npm test        # unit and content tests (node --test)
 npm run test:smoke  # browser smoke tests (Playwright, uses installed Chrome)
 npm run build   # production build into dist/
 ```
@@ -70,7 +70,7 @@ src/
     projection.js      lat/lon → x/y percentage (tested)
     projection.test.js
     MapView.jsx        bezel, basemap, pins, zoom-to-pin, tour controls
-  story/StoryPanel.jsx drawer (desktop) / bottom sheet (mobile), narrator block
+  story/StoryPanel.jsx drawer (desktop) / bottom sheet (mobile), narrator popup
   tour/useTour.js      tour index, previous/next, resume
   audio/useAudio.js    lazy music player, track switching, mute
 public/
@@ -88,12 +88,13 @@ Covered:
 - Map pins and artifact list items are real `<button>`s with accessible names and `aria-pressed`.
 - Visible focus ring on every control; focus is not trapped.
 - The story panel takes focus when opened from a map pin, returns focus to its trigger when closed, and closes on Escape.
-- The fact-check is a native `<details>` disclosure; it opens with Enter or Space and has a visible focus ring.
-- The narrator portrait has descriptive alt text.
+- The fact-check appears inside Nib's popup after the last story beat, so the tale and the record stay in one readable place.
+- Nib's popup is opened by a labelled button; focus moves into it on open and returns to the button on close. Its close button is a 44 px target.
+- The narrator portrait is a button with a descriptive accessible name; the portrait image itself is decorative (`alt=""`).
 - Tour stops are announced through an `aria-live` caption.
 - Body text is at least 16 px; text colours meet 4.5:1 contrast against the background.
 - The map image has alt text; artifact images use the artifact name as alt text.
-- `prefers-reduced-motion` disables the zoom animation.
+- `prefers-reduced-motion` disables the zoom animation and the popup/story transitions.
 - Audio starts only after a user gesture; music and click effects have separate on/off switches in the About panel, which is reachable from every screen; nothing in the app is audio-only.
 
 Not covered:

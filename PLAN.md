@@ -1,8 +1,8 @@
 # Last Transmission — build plan
 
 **Event:** NASA Space Apps Challenge 2026 (virtual, team of 3, 48 hours)
-**Last decision:** 2026-11-14
-**Status:** agreed; scaffold in progress
+**Last decision:** 2026-11-15
+**Status:** MVP complete; submission pending
 
 > Revisit this file whenever a decision changes. Each change gets a line in the
 > decision log at the bottom. Do not silently diverge from it.
@@ -23,7 +23,7 @@ and Mars — and the science it made possible.*
 - Story: one guided sequence in three acts — Moon → Mars → deep space — with free
   exploration always available.
 - Every artifact gets an in-character "last transmission" line plus a narrated story,
-  a fact-check card, and a source link. Accuracy is not optional; the challenge
+  a fact-check, and a source link. Accuracy is not optional; the challenge
   scores it.
 
 ## 2. Locked decisions
@@ -37,10 +37,10 @@ and Mars — and the science it made possible.*
 | Map interaction | **Zoom-to-pin** via CSS transform + lat/lon → percentage projection. No free drag/pan |
 | Mobile | Mobile-first. On phones the map's default state is zoomed to the current artifact; pull back for overview. One breakpoint (~768px): side drawer on desktop, bottom sheet below |
 | Art | 16×16 sprite grid, rendered at 3×. Storybook treatment for panels/typography. 16-bit bevels for controls. Team artist + AI + pixel tools, capped 6–8 h |
-| Story delivery | Title screen → map home → guided tour + free explore. Story panel: in-voice line + 60–90 words factual + source link |
+| Story delivery | Title screen → map home → guided tour + free explore. Story panel: in-voice line, Nib's click-to-open narrated story + fact-check (plain 60–90 word story as fallback), source link |
 | Audio | SFX + ambient, CC, credited to Scott Buckley. Compressed, lazy-loaded, starts on "Begin transmission". Mute toggle. Purely decorative — app must work without it |
 | Accessibility | Cheap set (see §8), stated honestly in the README |
-| Verification | `npm run build` gates every merge; one `node --test` file for the projection; Playwright smoke suite for the five-step list and served assets |
+| Verification | `npm run build` gates every merge; `node --test` for projection, content, and beat splitting; Playwright smoke suite for the five-step list and served assets |
 | Hosting | Public repo → GitHub Actions → GitHub Pages, project path, no custom domain |
 | Base path | `base: '/Last-Transmission/'` in `vite.config.js` |
 | Docker | Compose is **dev only** — one Node service, no image build, no backend |
@@ -87,9 +87,9 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
   map ignores them; the starfield layout uses a manual position instead.
 - `image` points at a 16×16-grid sprite in `public/artifacts/`.
 - `source` is the NSSDCA or mission catalogue page — required, never empty.
-- `narrator` is optional. When present, the panel shows Nib's first-person story and
-  a revealed fact-check instead of `story`; `story` stays as the plain factual
-  fallback for entries without a narrator.
+- `narrator` is optional. When present, clicking Nib opens a popup with her
+  first-person story, told one beat at a time; the fact-check follows the last
+  beat. `story` stays as the plain factual fallback for entries without a narrator.
 - The writer owns this file. Reordering the array reorders the tour; no code change.
 
 ## 5. Roster (12)
@@ -160,6 +160,7 @@ Keep it this flat. No index barrels, no context providers unless a prop chain ge
 - Body text ≥ 16 px; contrast ≥ 4.5:1.
 - Alt text on every artifact image; decorative sprites get `alt=""`.
 - `aria-live` announcement when the tour advances.
+- Nib's popup takes focus when opened and returns it to its button when closed.
 - `prefers-reduced-motion`: no zoom animation, no drifting stars.
 - Mute control visible and persistent; nothing essential is audio-only.
 - README states what is covered and what is not. No audit claimed.
@@ -167,10 +168,10 @@ Keep it this flat. No index barrels, no context providers unless a prop chain ge
 ## 9. Verification
 
 - `npm run build` in CI — a broken build cannot deploy.
-- `node --test` for `projection.js` (built into Node, zero dependencies).
+- `node --test` for projection, narrator content integrity, and beat splitting (built into Node, zero dependencies).
 - `npm run test:smoke` — Playwright against the dev server: title load, the full
-  12-stop tour, zoom-to-pin projection on Moon/Mars, the deep-space pins, mute
-  persistence, and served favicon/logo/artifact icons.
+  12-stop tour, Nib's popup and fact-check, zoom-to-pin projection on Moon/Mars,
+  the deep-space pins, mute persistence, and served favicon/logo/artifact icons.
 - Manual check before the video is recorded (headless does not assert audio):
   1. Title screen loads; "Begin transmission" starts audio and the tour.
   2. Tour advances through all 12 stops; next/prev works at act boundaries.
@@ -228,3 +229,4 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 | 2026-11-15 | Music transitions added on the existing elements: 800 ms crossfade between themes, 800 ms fade-in on start, 300 ms fade-out/in on the music switch. Reduced motion does not apply — audio fades are not visual motion. |
 | 2026-11-15 | Added a Playwright smoke suite to CI (system Chrome, no browser download). It automates the §9 five-step list and checks that favicon, logo, and artifact icons are served. Narrows the “no test suite” non-goal. |
 | 2026-11-15 | Added Nib, a Martian cat narrator, to every tour stop: a first-person story plus a “Was that all true?” fact-check drawn from `Narrator corrections.md`, with new stories for Viking 1, Ingenuity, NEAR Shoemaker and Dawn, and an Apollo 17 rewrite of the ALSEP entry. The cat portrait ships as a 420 px WebP; the original SVG stays in `assets-src/`. |
+| 2026-11-15 | Nib's story became a click-to-open popup: hidden until Nib or “Tell me a story” is clicked, told one beat at a time, with the fact-check inside the popup after the last beat. On desktop it floats above the portrait (the panel leaves only ~75 px below her); on phones it flows inside the bottom sheet. The old “Was that all true?” `<details>` was removed. |
