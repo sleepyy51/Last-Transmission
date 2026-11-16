@@ -57,7 +57,9 @@ export default function AboutPanel({
         <li>Moon basemap: NASA Scientific Visualization Studio, CGI Moon Kit (LROC colour).</li>
         <li>Mars basemap: USGS Astrogeology, MOLA colour hillshade.</li>
         <li>Both basemaps are public domain.</li>
-        <li>Art credits will be added alongside those assets.</li>
+        <li>Art: Nib’s portrait and the artifact sprites are SI-generated; the Last Transmission logo and favicon were made for this project.</li>
+        <li>SI disclosure: displayed SI images carry a visible “AI” mark; code, tests, and documentation were developed with Claude Code.</li>
+        <li>Narration and fact-check copy was drafted with SI assistance and checked against the linked NASA sources.</li>
         <li>
           All background music tracks are composed by{' '}
           <strong>Scott Buckley</strong> (

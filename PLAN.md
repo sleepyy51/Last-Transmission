@@ -208,10 +208,11 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 
 ## 12. Risks and open questions
 
-- **AI-generated assets** — confirm the event's rules on generative content before
-  relying on any AI-made sprite.
-- **Scott Buckley audio licence** — confirm the exact licence and required credit
-  string; a missing CC-BY credit is a judging risk.
+- **AI-generated assets** — confirmed: SI use is permitted, but generated images need
+  a visible watermark and code/data need disclosure. Nib's portrait and the artifact
+  sprites carry an “AI” mark; README and About disclose the tools.
+- **Scott Buckley audio licence** — confirmed CC BY 4.0. Credit appears in README, the
+  About panel, and the submission description with the required attribution string.
 - **Content is the bottleneck.** Twelve researched entries in 48 hours cannot be
   compressed at the end.
 - **Late audio** — never build the demo video around audio that has not landed.
@@ -230,3 +231,4 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 | 2026-11-15 | Added a Playwright smoke suite to CI (system Chrome, no browser download). It automates the §9 five-step list and checks that favicon, logo, and artifact icons are served. Narrows the “no test suite” non-goal. |
 | 2026-11-15 | Added Nib, a Martian cat narrator, to every tour stop: a first-person story plus a “Was that all true?” fact-check drawn from `Narrator corrections.md`, with new stories for Viking 1, Ingenuity, NEAR Shoemaker and Dawn, and an Apollo 17 rewrite of the ALSEP entry. The cat portrait ships as a 420 px WebP; the original SVG stays in `assets-src/`. |
 | 2026-11-15 | Nib's story became a click-to-open popup: hidden until Nib or “Tell me a story” is clicked, told one beat at a time, with the fact-check inside the popup after the last beat. On desktop it floats above the portrait (the panel leaves only ~75 px below her); on phones it flows inside the bottom sheet. The old “Was that all true?” `<details>` was removed. |
+| 2026-11-15 | SI compliance: Nib's portrait is SI-generated (confirmed from its C2PA manifest) and the artifact sprites are SI-generated; code, tests, and documentation were developed with Claude Code. Added visible “AI” watermarks to the 13 displayed images plus an in-app badge on Nib, and disclosed where/how SI was used in README, About, and the submission. Confirmed Scott Buckley's CC BY 4.0 attribution. |

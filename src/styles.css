@@ -439,6 +439,7 @@ button:focus-visible {
 }
 
 .narrator-portrait-button {
+    position: relative;
     flex: none;
     display: grid;
     place-items: center;
@@ -449,6 +450,23 @@ button:focus-visible {
     transition:
         border-color 120ms ease-out,
         transform 120ms ease-out;
+}
+
+/* Visible SI mark: the source art is AI-generated and must stay marked. */
+.si-mark {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    padding: 1px 3px;
+    border-radius: 2px;
+    background: rgb(0 0 0 / 0.78);
+    color: #fff;
+    font-family: system-ui, sans-serif;
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    pointer-events: none;
 }
 
 .narrator-portrait-button:hover {

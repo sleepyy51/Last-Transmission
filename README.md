@@ -24,6 +24,17 @@ Twelve artifacts left behind by NASA missions, presented as one guided tour in t
 
 Designed for ages 9–13 and casual space fans.
 
+## Super Intelligence (SI) use
+
+SI tools were used to build this project, and the visible indicators are in the app.
+
+- **Images:** Nib’s portrait and the twelve artifact sprites are SI-generated. Every displayed SI image carries a visible “AI” watermark, and Nib’s portrait has an additional in-app AI badge. Nib’s source SVG retains its C2PA provenance (Google Generative AI). The SI-generated images contain no NASA logos, flags, or mission insignia.
+- **Code and tests:** developed with [Claude Code](https://claude.com/claude-code) (Anthropic) and reviewed by the team. Recent commits carry a `Co-Authored-By: Claude Code` trailer.
+- **Narration and fact-check copy:** drafted with SI assistance and checked against the NASA sources linked in each story.
+- **Audio:** no SI-generated audio. Music is by Scott Buckley; sound effects are by Hove Audio.
+
+The same disclosure appears in the in-app About panel and the submission form.
+
 ## How it maps to the challenge
 
 | Challenge asks                                                         | Where it shows up                                                                                                                                                                                                          |
@@ -108,12 +119,14 @@ Not covered:
 - Moon basemap: NASA Scientific Visualization Studio, CGI Moon Kit (LROC colour).
 - Mars basemap: USGS Astrogeology, MOLA colour hillshade.
 - Both basemaps are public domain.
-- Art credits will be added alongside those assets.
+- Art: Nib’s portrait and the artifact sprites are SI-generated (see [SI use](#super-intelligence-si-use)); the Last Transmission logo and favicon were made for this project.
 - All background music tracks are composed by **Scott Buckley** ([www.scottbuckley.com.au](https://www.scottbuckley.com.au)) and licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/):
 - All sound effects are from **Hove Audio** ([https://hoveaudio.itch.io/](https://hoveaudio.itch.io/)).
 
 * **"At The End Of All Things"** – Intro & Outro theme
 * **"Clear Skies"** – Story introduction theme
 * **"With These Hands"** – Act III transition theme
+
+Submission attribution: “At The End Of All Things”, “Clear Skies”, and “With These Hands” by Scott Buckley — released under CC-BY 4.0. www.scottbuckley.com.au
 
 Design decisions, roster, and open questions live in [PLAN.md](PLAN.md).

@@ -64,6 +64,9 @@ function Narrator({ artifact }) {
             src={asset('narrator/cat.webp')}
             alt=""
           />
+          <span className="si-mark" aria-hidden="true">
+            AI
+          </span>
         </button>
         <div>
           <p className="narrator-name">Nib</p>
