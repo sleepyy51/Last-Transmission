@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const COLORS = ["#ffffff", "#ffe9c4", "#d4fbff", "#a8c5ff"];
 
@@ -8,13 +8,18 @@ export default function Starfield({
   shootingStars = true,
 }) {
   const canvasRef = useRef(null);
+  const animationFrameRef = useRef(null);
+  const renderRef = useRef(null);
+  const pausedRef = useRef(false);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: true });
 
-    let animationFrameId;
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reducedMotion = motionQuery.matches;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
@@ -52,12 +57,13 @@ export default function Starfield({
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       ctx.imageSmoothingEnabled = !pixelArt;
+      if (reducedMotion || pausedRef.current) render();
     };
 
     // Pause animation if website is not focused
     const handleVisibility = () => {
       if (document.hidden) {
-        cancelAnimationFrame(animationFrameId);
+        cancelAnimationFrame(animationFrameRef.current);
       } else {
         render();
       }
@@ -133,35 +139,64 @@ export default function Starfield({
       }
 
       ctx.globalAlpha = 1;
-      animationFrameId = requestAnimationFrame(render);
+      if (!reducedMotion && !pausedRef.current) {
+        animationFrameRef.current = requestAnimationFrame(render);
+      }
+    };
+    renderRef.current = render;
+    const handleMotionChange = (event) => {
+      reducedMotion = event.matches;
+      cancelAnimationFrame(animationFrameRef.current);
+      render();
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
     document.addEventListener("visibilitychange", handleVisibility);
+    motionQuery.addEventListener("change", handleMotionChange);
     render();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animationFrameRef.current);
+      renderRef.current = null;
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("visibilitychange", handleVisibility);
+      motionQuery.removeEventListener("change", handleMotionChange);
     };
   }, [starCount, pixelArt, shootingStars]);
 
+  const togglePause = () => {
+    const next = !pausedRef.current;
+    pausedRef.current = next;
+    setPaused(next);
+    cancelAnimationFrame(animationFrameRef.current);
+    if (!next) renderRef.current?.();
+  };
+
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      style={{
-        position: "fixed",
-        inset: 0,
-        width: "100vw",
-        height: "100vh",
-        zIndex: -1,
-        pointerEvents: "none", // Doesn't block clicks
-        background:
-          "radial-gradient(ellipse at bottom, #0b0f17 0%, #040609 100%)",
-        imageRendering: pixelArt ? "pixelated" : "auto",
-      }}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          inset: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: -1,
+          pointerEvents: "none", // Doesn't block clicks
+          background:
+            "radial-gradient(ellipse at bottom, #0b0f17 0%, #040609 100%)",
+          imageRendering: pixelArt ? "pixelated" : "auto",
+        }}
+      />
+      <button
+        type="button"
+        className="starfield-toggle"
+        aria-pressed={paused}
+        onClick={togglePause}
+      >
+        {paused ? "Resume stars" : "Pause stars"}
+      </button>
+    </>
   );
 }

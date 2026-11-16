@@ -16,6 +16,8 @@ test('title screen loads', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Last Transmission' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Begin transmission' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Explore the map' })).toBeVisible()
+  await page.getByRole('button', { name: 'Pause stars' }).click()
+  await expect(page.getByRole('button', { name: 'Resume stars' })).toBeVisible()
   expect(
     await page.locator('.site-logo').evaluate((el) => el.naturalWidth),
   ).toBeGreaterThan(0)
@@ -41,6 +43,20 @@ test('tour advances through all stops and finishes', async ({ page }) => {
   await expect(
     page.getByRole('heading', { name: 'Last Transmission' }),
   ).toBeVisible()
+})
+
+test('responsive controls remain reachable and story panels close', async ({ page }) => {
+  await page.goto('./')
+  await page.getByRole('button', { name: 'Begin transmission' }).click()
+  await expect(page.getByRole('button', { name: 'Next' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Home' }).click()
+  await page.getByRole('button', { name: 'Explore the map' }).click()
+  await page.getByRole('button', { name: 'Deep space' }).click()
+  await page.locator('.artifact-list button').first().click()
+  await expect(page.locator('.story-panel')).toBeVisible()
+  await page.getByRole('button', { name: 'Close story' }).click()
+  await expect(page.locator('.story-panel')).toBeHidden()
 })
 
 test('zoom-to-pin centres Moon and Mars artifacts', async ({ page }) => {

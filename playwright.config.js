@@ -9,6 +9,13 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${port}/Last-Transmission/`,
     channel: 'chrome',
   },
+  projects: [
+    { name: 'desktop' },
+    {
+      name: 'mobile',
+      use: { viewport: { width: 375, height: 667 } },
+    },
+  ],
   webServer: {
     command: `npm run dev -- --port ${port} --strictPort`,
     url: `http://127.0.0.1:${port}/Last-Transmission/`,
