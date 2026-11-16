@@ -426,6 +426,7 @@ button:focus-visible {
 }
 
 .narrator {
+    position: relative;
     margin-top: 16px;
     padding-top: 16px;
     border-top: 2px solid rgb(144 213 82 / 0.5);
@@ -478,15 +479,15 @@ button:focus-visible {
 }
 
 .narrator-intro {
-    margin: 12px 0;
-    color: var(--dim);
+    margin: 0 0 12px;
+    color: #3f5a24;
     font-style: italic;
 }
 
 .narrator-bubble {
     position: relative;
-    margin: 18px 0 0;
-    padding: 14px 14px 12px;
+    margin: 14px 0 0;
+    padding: 12px 14px;
     border: 2px solid #90d552;
     border-radius: 2px;
     background:
@@ -498,6 +499,56 @@ button:focus-visible {
         #dcecc4;
     box-shadow: 4px 4px 0 #26331a;
     color: #18200f;
+    animation: narrator-open 160ms ease-out;
+}
+
+.narrator-bubble-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.narrator-bubble-name {
+    margin: 0;
+    color: #3f5a24;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.narrator-close {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: -8px -8px 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #18200f;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.narrator-scroll {
+    min-height: 0;
+}
+
+.narrator-open {
+    margin-top: 12px;
+    padding: 8px 14px;
+    border: 2px solid rgb(144 213 82 / 0.55);
+    border-radius: 2px;
+    background: #171c26;
+    color: #b9e87e;
+    font-weight: 600;
+}
+
+.narrator-open:hover {
+    border-color: #b9e87e;
 }
 
 /* Two stacked triangles: a green outline over the paper fill. */
@@ -585,64 +636,17 @@ button:focus-visible {
     }
 }
 
-.narrator-reveal {
-    margin-top: 16px;
-    border-top: 1px solid rgb(144 213 82 / 0.4);
-}
-
-.narrator-reveal summary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 44px;
-    color: #b9e87e;
-    font-weight: 600;
-    list-style: none;
-    cursor: pointer;
-}
-
-.narrator-reveal summary::-webkit-details-marker {
-    display: none;
-}
-
-.narrator-reveal summary::before {
-    flex: none;
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 6px solid currentColor;
-    transition: transform 160ms ease-out;
-}
-
-.narrator-reveal[open] summary::before {
-    transform: rotate(90deg);
-}
-
-.narrator-reveal summary:focus-visible {
-    outline: 3px solid var(--fg);
-    outline-offset: 2px;
-}
-
-.narrator-reveal[open] summary {
-    margin-bottom: 8px;
-}
-
 .narrator-facts {
+    margin-top: 14px;
     padding: 12px 12px 12px 16px;
-    border-left: 3px solid #90d552;
+    border-left: 3px solid #3f5a24;
     border-radius: 0 6px 6px 0;
-    background: #171c26;
-}
-
-.narrator-reveal[open] .narrator-facts {
-    animation: narrator-reveal 160ms ease-out;
+    background: rgb(63 90 36 / 0.08);
 }
 
 .narrator-claim {
     margin: 0;
-    color: var(--dim);
+    color: #3f5a24;
     font-style: italic;
 }
 
@@ -659,15 +663,36 @@ button:focus-visible {
         width: 72px;
         height: 72px;
     }
+    /* Opens upward: the panel leaves only about 75px below Nib. */
     .narrator-bubble {
-        margin-top: 20px;
+        position: absolute;
+        right: 0;
+        bottom: calc(100% - 4px);
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        max-height: 60dvh;
+        margin: 0;
         padding: 16px 18px 14px;
     }
+    .narrator-scroll {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
     .narrator-bubble::before {
+        top: auto;
+        bottom: -12px;
         left: 27px;
+        border-bottom-width: 0;
+        border-top: 12px solid #90d552;
     }
     .narrator-bubble::after {
+        top: auto;
+        bottom: -10px;
         left: 30px;
+        border-top-width: 12px;
+        border-top-color: #dcecc4;
+        border-bottom-width: 0;
     }
     .narrator-story {
         font-size: 1.0625rem;
@@ -675,10 +700,10 @@ button:focus-visible {
     }
 }
 
-@keyframes narrator-reveal {
+@keyframes narrator-open {
     from {
         opacity: 0;
-        transform: translateY(-4px);
+        transform: translateY(4px);
     }
 }
 
@@ -703,16 +728,13 @@ button:focus-visible {
     .map-world {
         transition: none;
     }
-    .narrator-facts {
+    .narrator-bubble {
         animation: none;
     }
     .narrator-line {
         animation: none;
     }
     .narrator-portrait-button {
-        transition: none;
-    }
-    .narrator-reveal summary::before {
         transition: none;
     }
 }

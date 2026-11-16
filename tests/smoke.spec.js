@@ -32,9 +32,7 @@ test('tour advances through all stops and finishes', async ({ page }) => {
 
   for (const [i, artifact] of artifacts.entries()) {
     await expect(page.locator('#story-title')).toHaveText(artifact.name)
-    await expect(page.locator('.narrator-story')).toBeVisible()
-    await expect(page.locator('.narrator-fact')).not.toHaveCount(0)
-    await expect(page.locator('.narrator-fact').first()).toBeHidden()
+    await expect(page.locator('.narrator-open')).toBeVisible()
     if (i === 0) {
       expect(
         await page
@@ -76,9 +74,14 @@ test('Nib tells the story one bubble at a time', async ({ page }) => {
 
   const [artifact] = artifacts
   const lines = beats(artifact.narrator.story)
-  const bubble = page.locator('.narrator-story')
+  const bubble = page.locator('.narrator-bubble')
   const nib = page.locator('.narrator-portrait-button')
+  const open = page.locator('.narrator-open')
 
+  await expect(bubble).toHaveCount(0)
+  await expect(open).toHaveText('Tell me a story')
+
+  await open.click()
   await expect(bubble).toContainText(`I know ${artifact.name}'s story`)
   await expect(bubble).not.toContainText(lines[0])
 
@@ -94,6 +97,37 @@ test('Nib tells the story one bubble at a time', async ({ page }) => {
 
   await nib.click()
   await expect(bubble).toContainText(lines[2])
+
+  await page.getByRole('button', { name: "Close Nib's story" }).click()
+  await expect(bubble).toHaveCount(0)
+  await expect(open).toHaveText('Continue the story')
+
+  await open.click()
+  await expect(bubble).toContainText(lines[2])
+})
+
+test('Nib shows the fact-check after the last beat', async ({ page }) => {
+  await page.goto('./')
+  await page.getByRole('button', { name: 'Begin transmission' }).click()
+
+  const [artifact] = artifacts
+  const lines = beats(artifact.narrator.story)
+  await page.locator('.narrator-open').click()
+  for (let i = 0; i < lines.length; i++) {
+    await page.locator('.narrator-next').click()
+  }
+
+  const facts = page.locator('.narrator-fact')
+  await expect(facts.first()).toBeVisible()
+  await expect(page.locator('.narrator-next')).toHaveText('Tell it again')
+
+  await page.getByRole('button', { name: "Close Nib's story" }).click()
+  await expect(page.locator('.narrator-open')).toHaveText('Hear it again')
+
+  await page.locator('.narrator-open').click()
+  await expect(page.locator('.narrator-bubble')).toContainText(
+    `I know ${artifact.name}'s story`,
+  )
 })
 
 test('zoom-to-pin centres Moon and Mars artifacts', async ({ page }) => {
@@ -137,8 +171,8 @@ test('deep-space act renders and its entries open', async ({ page }) => {
 
   await page.getByRole('button', { name: `${deep[2].name} (${deep[2].year})` }).click()
   await expect(page.locator('#story-title')).toHaveText(deep[2].name)
-  await page.locator('.narrator-reveal summary').click()
-  await expect(page.locator('.narrator-fact').first()).toBeVisible()
+  await page.locator('.narrator-open').click()
+  await expect(page.locator('.narrator-bubble')).toBeVisible()
 })
 
 test('mute toggles survive navigation', async ({ page }) => {
