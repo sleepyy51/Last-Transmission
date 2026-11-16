@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import AboutPanel from "./about/AboutPanel.jsx";
 import { useAudio } from "./audio/useAudio.js";
 import MapView from "./map/MapView.jsx";
+import Starfield from "./stars/StarField.jsx";
 
 export default function App() {
   const [view, setView] = useState("title");
@@ -75,6 +76,7 @@ export default function App() {
 
   return (
     <>
+      <Starfield pixelArt={true} starCount={150} shootingStars={true} />
       {screen}
       <button
         ref={aboutButton}
