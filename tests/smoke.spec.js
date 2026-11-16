@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { project } from '../src/map/projection.js'
+import { beats } from '../src/story/beats.js'
 
 const artifacts = JSON.parse(
   readFileSync(new URL('../src/data/artifacts.json', import.meta.url), 'utf8'),
@@ -31,6 +32,16 @@ test('tour advances through all stops and finishes', async ({ page }) => {
 
   for (const [i, artifact] of artifacts.entries()) {
     await expect(page.locator('#story-title')).toHaveText(artifact.name)
+    await expect(page.locator('.narrator-story')).toBeVisible()
+    await expect(page.locator('.narrator-fact')).not.toHaveCount(0)
+    await expect(page.locator('.narrator-fact').first()).toBeHidden()
+    if (i === 0) {
+      expect(
+        await page
+          .locator('.narrator-portrait')
+          .evaluate((el) => el.naturalWidth),
+      ).toBeGreaterThan(0)
+    }
     await expect(page.locator('.tour-controls span')).toHaveText(
       `Stop ${i + 1} of ${artifacts.length}`,
     )
@@ -57,6 +68,32 @@ test('responsive controls remain reachable and story panels close', async ({ pag
   await expect(page.locator('.story-panel')).toBeVisible()
   await page.getByRole('button', { name: 'Close story' }).click()
   await expect(page.locator('.story-panel')).toBeHidden()
+})
+
+test('Nib tells the story one bubble at a time', async ({ page }) => {
+  await page.goto('./')
+  await page.getByRole('button', { name: 'Begin transmission' }).click()
+
+  const [artifact] = artifacts
+  const lines = beats(artifact.narrator.story)
+  const bubble = page.locator('.narrator-story')
+  const nib = page.locator('.narrator-portrait-button')
+
+  await expect(bubble).toContainText(`I know ${artifact.name}'s story`)
+  await expect(bubble).not.toContainText(lines[0])
+
+  await nib.click()
+  await expect(bubble).toContainText(lines[0])
+  await expect(page.locator('.narrator-count')).toHaveText(
+    `Part 1 of ${lines.length}`,
+  )
+  await expect(page.locator('.narrator-line')).toHaveCount(1)
+
+  await page.locator('.narrator-next').click()
+  await expect(bubble).toContainText(lines[1])
+
+  await nib.click()
+  await expect(bubble).toContainText(lines[2])
 })
 
 test('zoom-to-pin centres Moon and Mars artifacts', async ({ page }) => {
@@ -100,7 +137,8 @@ test('deep-space act renders and its entries open', async ({ page }) => {
 
   await page.getByRole('button', { name: `${deep[2].name} (${deep[2].year})` }).click()
   await expect(page.locator('#story-title')).toHaveText(deep[2].name)
-  await expect(page.locator('.story-body')).toBeVisible()
+  await page.locator('.narrator-reveal summary').click()
+  await expect(page.locator('.narrator-fact').first()).toBeVisible()
 })
 
 test('mute toggles survive navigation', async ({ page }) => {
@@ -119,6 +157,7 @@ test('favicon, logo, and artifact icons are served', async ({ page, request }) =
   for (const [path, type] of [
     ['favicon.png', 'image/png'],
     ['logo.svg', 'image/svg+xml'],
+    ['narrator/cat.webp', 'image/webp'],
   ]) {
     const response = await request.get(path)
     expect(response.status(), path).toBe(200)

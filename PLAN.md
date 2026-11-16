@@ -22,8 +22,9 @@ and Mars — and the science it made possible.*
 - Audience: **ages 9–13** and casual space fans.
 - Story: one guided sequence in three acts — Moon → Mars → deep space — with free
   exploration always available.
-- Every artifact gets an in-character "last transmission" line plus factual copy and
-  a source link. Accuracy is not optional; the challenge scores it.
+- Every artifact gets an in-character "last transmission" line plus a narrated story,
+  a fact-check card, and a source link. Accuracy is not optional; the challenge
+  scores it.
 
 ## 2. Locked decisions
 
@@ -68,7 +69,16 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
   "transmission": "Tranquility Base here. The Eagle has landed.",
   "story": "60–90 words. What it is, why it was sent, what science it made possible.",
   "image": "/artifacts/apollo-11-descent-stage.png",
-  "source": "https://nssdc.gsfc.nasa.gov/..."
+  "source": "https://nssdc.gsfc.nasa.gov/...",
+  "narrator": {
+    "story": ["First paragraph in the artifact's voice.", "Second paragraph."],
+    "factCheck": [
+      {
+        "claim": "What the story says.",
+        "correction": "What the records say, in Nib's voice."
+      }
+    ]
+  }
 }
 ```
 
@@ -77,6 +87,9 @@ One file, `src/data/artifacts.json`. Array order **is** tour order.
   map ignores them; the starfield layout uses a manual position instead.
 - `image` points at a 16×16-grid sprite in `public/artifacts/`.
 - `source` is the NSSDCA or mission catalogue page — required, never empty.
+- `narrator` is optional. When present, the panel shows Nib's first-person story and
+  a revealed fact-check instead of `story`; `story` stays as the plain factual
+  fallback for entries without a narrator.
 - The writer owns this file. Reordering the array reorders the tour; no code change.
 
 ## 5. Roster (12)
@@ -214,3 +227,4 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 | 2026-11-15 | Click SFX wired from the Hove Audio pack (one shared click, sources kept in `assets-src/music/sfx/`). The standalone mute button became an About panel reachable from every screen, holding the credits plus separate music and click-effect switches. |
 | 2026-11-15 | Music transitions added on the existing elements: 800 ms crossfade between themes, 800 ms fade-in on start, 300 ms fade-out/in on the music switch. Reduced motion does not apply — audio fades are not visual motion. |
 | 2026-11-15 | Added a Playwright smoke suite to CI (system Chrome, no browser download). It automates the §9 five-step list and checks that favicon, logo, and artifact icons are served. Narrows the “no test suite” non-goal. |
+| 2026-11-15 | Added Nib, a Martian cat narrator, to every tour stop: a first-person story plus a “Was that all true?” fact-check drawn from `Narrator corrections.md`, with new stories for Viking 1, Ingenuity, NEAR Shoemaker and Dawn, and an Apollo 17 rewrite of the ALSEP entry. The cat portrait ships as a 420 px WebP; the original SVG stays in `assets-src/`. |
