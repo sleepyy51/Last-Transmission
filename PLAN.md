@@ -39,7 +39,7 @@ and Mars — and the science it made possible.*
 | Story delivery | Title screen → map home → guided tour + free explore. Story panel: in-voice line + 60–90 words factual + source link |
 | Audio | SFX + ambient, CC, credited to Scott Buckley. Compressed, lazy-loaded, starts on "Begin transmission". Mute toggle. Purely decorative — app must work without it |
 | Accessibility | Cheap set (see §8), stated honestly in the README |
-| Verification | `npm run build` gates every merge; one `node --test` file for the projection; 5-step manual smoke list |
+| Verification | `npm run build` gates every merge; one `node --test` file for the projection; Playwright smoke suite for the five-step list and served assets |
 | Hosting | Public repo → GitHub Actions → GitHub Pages, project path, no custom domain |
 | Base path | `base: '/Last-Transmission/'` in `vite.config.js` |
 | Docker | Compose is **dev only** — one Node service, no image build, no backend |
@@ -49,7 +49,7 @@ and Mars — and the science it made possible.*
 ## 3. Non-goals
 
 No 3D globe. No rotating disc. No drag/pan. No router. No backend. No voice-over.
-No full accessibility audit. No landscape prompt. No test suite. No custom domain.
+No full accessibility audit. No landscape prompt. No broad unit-test suite (projection test and Playwright smoke only). No custom domain.
 No roster beyond 12 artifacts.
 
 ## 4. Data model
@@ -155,7 +155,10 @@ Keep it this flat. No index barrels, no context providers unless a prop chain ge
 
 - `npm run build` in CI — a broken build cannot deploy.
 - `node --test` for `projection.js` (built into Node, zero dependencies).
-- Manual smoke list before the video is recorded:
+- `npm run test:smoke` — Playwright against the dev server: title load, the full
+  12-stop tour, zoom-to-pin projection on Moon/Mars, the deep-space pins, mute
+  persistence, and served favicon/logo/artifact icons.
+- Manual check before the video is recorded (headless does not assert audio):
   1. Title screen loads; "Begin transmission" starts audio and the tour.
   2. Tour advances through all 12 stops; next/prev works at act boundaries.
   3. Zoom-to-pin centres each artifact correctly on both bodies.
@@ -210,3 +213,4 @@ Never cut: content accuracy, the deployed URL, the 30-second video.
 | 2026-11-15 | Audio wired from the supplied Scott Buckley tracks: title/finish = At The End Of All Things, Moon/Mars = Clear Skies, deep space = With These Hands, lazy-loaded and looping with a persistent mute. The last tour stop's Next became Finish (returns to the title screen) so the outro cue has somewhere to play. No SFX files were supplied, so none are wired. |
 | 2026-11-15 | Click SFX wired from the Hove Audio pack (one shared click, sources kept in `assets-src/music/sfx/`). The standalone mute button became an About panel reachable from every screen, holding the credits plus separate music and click-effect switches. |
 | 2026-11-15 | Music transitions added on the existing elements: 800 ms crossfade between themes, 800 ms fade-in on start, 300 ms fade-out/in on the music switch. Reduced motion does not apply — audio fades are not visual motion. |
+| 2026-11-15 | Added a Playwright smoke suite to CI (system Chrome, no browser download). It automates the §9 five-step list and checks that favicon, logo, and artifact icons are served. Narrows the “no test suite” non-goal. |

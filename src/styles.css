@@ -30,6 +30,13 @@ body {
     text-align: center;
 }
 
+.site-logo {
+    width: min(220px, 55vw);
+    aspect-ratio: 1;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
 h1 {
     margin: 0;
     font-size: clamp(2rem, 8vw, 4rem);
@@ -91,6 +98,13 @@ button:focus-visible {
     position: fixed;
     top: 12px;
     right: 12px;
+    z-index: 18;
+}
+
+.starfield-toggle {
+    position: fixed;
+    top: 12px;
+    left: 12px;
     z-index: 18;
 }
 
@@ -330,10 +344,18 @@ button:focus-visible {
     gap: 12px;
 }
 
+.map-content {
+    display: grid;
+    gap: 12px;
+}
+
 @media (min-width: 768px) {
     .map-layout {
         grid-template-columns: minmax(0, 1fr) 340px;
         align-items: start;
+    }
+    .map-content {
+        min-width: 0;
     }
 }
 
