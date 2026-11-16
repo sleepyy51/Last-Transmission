@@ -1,6 +1,6 @@
 # Last Transmission
 
-**Forgotten astral artifacts from mankind.**
+**Forgotten astral artifacts by mankind.**
 
 An interactive pixel-art map of NASA hardware still sitting on the Moon and Mars — and the science it made possible.
 
