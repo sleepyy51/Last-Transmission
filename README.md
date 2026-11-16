@@ -39,8 +39,8 @@ The same disclosure appears in the in-app About panel and the submission form.
 
 | Challenge asks                                                         | Where it shows up                                                                                                                                                                                                          |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tell the story of NASA’s discarded equipment                           | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`), each with an in-character “last transmission”.                                                               |
-| Explain what it is, why it was sent, and what science it made possible | Each story panel has a narrated first-person story, a fact-check that follows it to separate the tale from the record, and a NASA source link.                                                                               |
+| Tell the story of NASA’s discarded equipment                           | 12 artifacts across the Moon, Mars, and deep space, ordered into a three-act tour (`src/data/artifacts.json`), each with an in-character “last transmission”.                                                              |
+| Explain what it is, why it was sent, and what science it made possible | Each story panel has a narrated first-person story, a fact-check that follows it to separate the tale from the record, and a NASA source link.                                                                             |
 | Teach school-age and casual space enthusiasts                          | A guided tour with no prior knowledge assumed, a pixel-art map, and stories written for ages 9–13.                                                                                                                         |
 | Use an interactive web format                                          | React + Vite single-page app: map, zoom-to-pin, tour controls, story panel, keyboard support.                                                                                                                              |
 | Consider accessibility of the format                                   | See [Accessibility](#accessibility) — what is covered and what is not.                                                                                                                                                     |
@@ -107,12 +107,6 @@ Covered:
 - The map image has alt text; artifact images use the artifact name as alt text.
 - `prefers-reduced-motion` disables the zoom animation and the popup/story transitions.
 - Audio starts only after a user gesture; music and click effects have separate on/off switches in the About panel, which is reachable from every screen; nothing in the app is audio-only.
-
-Not covered:
-
-- No formal WCAG 2.1 AA audit has been run, and there has been no screen-reader testing.
-- High-contrast / forced-colors modes have not been tested.
-- The music/effect choices are not remembered across page reloads, and there is no volume control.
 
 ## Credits
 
